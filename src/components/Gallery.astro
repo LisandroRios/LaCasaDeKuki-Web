@@ -1,0 +1,445 @@
+---
+// Gallery Section — La Casa de Kuki
+// Las imágenes en public/images/ son placeholders — reemplazarlas con fotos reales
+
+const galleryItems = [
+  {
+    src: '/images/deptos/depto1.png',
+    alt: 'Depto Inti — espacio cómodo y cálido con ropa de cama de calidad y baño privado',
+    label: 'Depto Inti',
+    category: 'deptos',
+    span: 'col-span-2',
+  },
+  {
+    src: '/images/quincho/quincho1.png',
+    alt: 'Quincho compartido con parrilla, cocina completa y vajilla lista para usar',
+    label: 'Quincho',
+    category: 'quincho',
+    span: '',
+  },
+  {
+    src: '/images/estacionamiento/estacionamiento1.png',
+    alt: 'Estacionamiento privado y seguro dentro del predio, sin costo adicional',
+    label: 'Estacionamiento',
+    category: 'estacionamiento',
+    span: '',
+  },
+  {
+    src: '/images/vistas/vistas1.png',
+    alt: 'Vista privilegiada al Cerro de los Siete Colores desde la propiedad',
+    label: 'Vistas',
+    category: 'vistas',
+    span: 'col-span-2',
+  },
+];
+---
+
+<section id="galeria" class="gallery-section">
+  <div class="section-wrapper">
+    <!-- Header -->
+    <div class="gallery-header">
+      <p class="gallery-eyebrow">Conocé nuestros espacios</p>
+      <h2 class="section-title">Un rincón único<br /><em>en la Quebrada</em></h2>
+      <div class="section-divider"><span>✦</span></div>
+      <p class="section-subtitle">
+        Departamentos Inti y Killa, quincho compartido, estacionamiento privado
+        y vistas al Cerro de los Siete Colores — todo pensado para que llegues y te sientas en casa.
+      </p>
+    </div>
+
+    <!-- Grid de galería -->
+    <div class="gallery-grid" id="gallery-grid" role="list">
+      {galleryItems.map((item, index) => (
+        <div
+          class={`gallery-item ${item.span}`}
+          role="listitem"
+          data-category={item.category}
+          style={`animation-delay: ${index * 0.1}s`}
+        >
+          <button
+            class="gallery-btn"
+            aria-label={`Ver foto: ${item.alt}`}
+            data-src={item.src}
+            data-alt={item.alt}
+            data-index={index}
+          >
+            <img
+              src={item.src}
+              alt={item.alt}
+              loading="lazy"
+              decoding="async"
+              class="gallery-img"
+            />
+            <div class="gallery-overlay" aria-hidden="true">
+              <div class="gallery-overlay-content">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <span>Ver foto</span>
+              </div>
+            </div>
+          </button>
+          <div class="gallery-label" aria-hidden="true">
+            <span>{item.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Nota de reemplazo de fotos (visible solo en desarrollo con modo debug) -->
+    <p class="gallery-note">
+      📸 <strong>¿Sos el dueño?</strong> Reemplazá las imágenes en 
+      <code>public/images/</code> con las fotos reales del hospedaje.
+    </p>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galería de fotos" hidden>
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar galería">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+      <img id="lightbox-img" src="" alt="" class="lightbox-img" />
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+      <div class="lightbox-nav">
+        <button id="lightbox-prev" class="lightbox-nav-btn" aria-label="Foto anterior">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+          </svg>
+        </button>
+        <button id="lightbox-next" class="lightbox-nav-btn" aria-label="Foto siguiente">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Lightbox functionality
+  const lightbox = document.getElementById('lightbox') as HTMLElement | null;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+
+  const galleryButtons = document.querySelectorAll<HTMLButtonElement>('.gallery-btn');
+  let currentIndex = 0;
+  const items = Array.from(galleryButtons).map(btn => ({
+    src: btn.dataset.src || '',
+    alt: btn.dataset.alt || '',
+  }));
+
+  function openLightbox(index: number) {
+    currentIndex = index;
+    if (!lightbox || !lightboxImg || !lightboxCaption) return;
+    lightboxImg.src = items[index].src;
+    lightboxImg.alt = items[index].alt;
+    lightboxCaption.textContent = items[index].alt;
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+    lightbox.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function navigate(direction: number) {
+    currentIndex = (currentIndex + direction + items.length) % items.length;
+    if (!lightboxImg || !lightboxCaption) return;
+    lightboxImg.src = items[currentIndex].src;
+    lightboxImg.alt = items[currentIndex].alt;
+    lightboxCaption.textContent = items[currentIndex].alt;
+  }
+
+  galleryButtons.forEach((btn, i) => {
+    btn.addEventListener('click', () => openLightbox(i));
+  });
+
+  lightboxClose?.addEventListener('click', closeLightbox);
+  lightboxBackdrop?.addEventListener('click', closeLightbox);
+  lightboxPrev?.addEventListener('click', () => navigate(-1));
+  lightboxNext?.addEventListener('click', () => navigate(1));
+
+  document.addEventListener('keydown', (e) => {
+    if (lightbox?.hidden) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigate(-1);
+    if (e.key === 'ArrowRight') navigate(1);
+  });
+
+  // Intersection Observer para animaciones de entrada
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).style.opacity = '1';
+          (entry.target as HTMLElement).style.transform = 'translateY(0)';
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  galleryItems.forEach(item => {
+    (item as HTMLElement).style.opacity = '0';
+    (item as HTMLElement).style.transform = 'translateY(24px)';
+    (item as HTMLElement).style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(item);
+  });
+</script>
+
+<style>
+  .gallery-section {
+    padding: 6rem 0;
+    background-color: var(--color-blanco-calido);
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .gallery-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: var(--color-terracota);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--color-terracota);
+    display: block;
+  }
+
+  /* Grid */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .gallery-item {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+
+  .gallery-item.col-span-2 {
+    grid-column: span 2;
+  }
+
+  .gallery-btn {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: none;
+    display: block;
+    position: relative;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+
+  .gallery-btn:hover .gallery-img {
+    transform: scale(1.06);
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(122, 75, 46, 0) 40%,
+      rgba(122, 75, 46, 0.7) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-btn:hover .gallery-overlay {
+    opacity: 1;
+  }
+
+  .gallery-overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+  }
+
+  .gallery-label {
+    position: absolute;
+    bottom: 0.875rem;
+    left: 0.875rem;
+  }
+
+  .gallery-label span {
+    background-color: rgba(250, 247, 242, 0.92);
+    color: var(--color-marron);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* Nota para reemplazar imágenes */
+  .gallery-note {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-carbon-light);
+    background: var(--color-arena-light);
+    border: 1px dashed var(--color-arena);
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .gallery-note code {
+    background: var(--color-arena);
+    padding: 0.1em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.8125rem;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox[hidden] { display: none; }
+
+  .lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 12, 6, 0.92);
+    backdrop-filter: blur(4px);
+  }
+
+  .lightbox-content {
+    position: relative;
+    z-index: 1;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .lightbox-caption {
+    color: rgba(255,255,255,0.8);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-align: center;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+
+  .lightbox-nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .lightbox-nav-btn {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .lightbox-nav-btn:hover { background: rgba(255,255,255,0.3); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .gallery-item.col-span-2 {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+    .gallery-item.col-span-2 {
+      grid-column: span 1;
+    }
+  }
+</style>

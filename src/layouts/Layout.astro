@@ -1,0 +1,307 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'La Casa de Kuki — Hospedaje en Purmamarca, Jujuy',
+  description = 'Hospedaje cálido y auténtico en el corazón de Purmamarca, Jujuy. Departamentos confortables, quincho, estacionamiento y vistas al Cerro de los Siete Colores. ¡Reservá directo!',
+  image = '/images/hero.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO Primario -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="La Casa de Kuki" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <link rel="apple-touch-icon" href="/images/logo.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Meta adicionales -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="La Casa de Kuki" />
+    <meta name="theme-color" content="#C1603A" />
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": "La Casa de Kuki",
+      "description": description,
+      "url": Astro.site,
+      "telephone": "+5493884616542",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Purmamarca",
+        "addressRegion": "Jujuy",
+        "addressCountry": "AR"
+      },
+      "sameAs": [
+        "https://www.instagram.com/lacasadekuki.purmamarca/",
+        "https://www.google.com.ar/maps/place/La+Casa+de+Kuki+Purmamarca/@-23.7484756,-65.4966371,17z"
+      ],
+      "image": new URL(image, Astro.site)
+    })} />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar">
+      <div class="section-wrapper navbar-inner">
+        <a href="/" class="navbar-logo" aria-label="La Casa de Kuki - Inicio">
+          <img src="/images/logo.png" alt="La Casa de Kuki" width="48" height="48" />
+          <span class="navbar-brand-text">La Casa de Kuki</span>
+        </a>
+        <div class="navbar-links">
+          <a href="#galeria" class="navbar-link">Galería</a>
+          <a href="#servicios" class="navbar-link">Servicios</a>
+          <a href="#resenas" class="navbar-link">Reseñas</a>
+          <a href="#contacto" class="btn-primary navbar-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
+            </svg>
+            Consultar
+          </a>
+        </div>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <a href="#galeria" class="mobile-link">Galería</a>
+        <a href="#servicios" class="mobile-link">Servicios</a>
+        <a href="#resenas" class="mobile-link">Reseñas</a>
+        <a href="#contacto" class="mobile-cta btn-primary">Consultar por WhatsApp</a>
+      </div>
+    </nav>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <script>
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+          navbar?.classList.add('scrolled');
+        } else {
+          navbar?.classList.remove('scrolled');
+        }
+      });
+
+      // Mobile menu toggle
+      const toggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      toggle?.addEventListener('click', () => {
+        const isOpen = mobileMenu?.classList.contains('open');
+        mobileMenu?.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        mobileMenu?.setAttribute('aria-hidden', String(isOpen));
+        toggle.classList.toggle('active');
+      });
+
+      // Close mobile menu on link click
+      mobileMenu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          toggle?.setAttribute('aria-expanded', 'false');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+          toggle?.classList.remove('active');
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  /* Navbar */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1rem 0;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  }
+
+  .navbar.scrolled {
+    background-color: rgba(250, 247, 242, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px rgba(44, 44, 44, 0.08);
+    padding: 0.625rem 0;
+  }
+
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    text-decoration: none;
+  }
+
+  .navbar-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-terracota);
+  }
+
+  .navbar-brand-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  .navbar.scrolled .navbar-brand-text {
+    color: var(--color-marron-dark);
+  }
+
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .navbar-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .navbar.scrolled .navbar-link {
+    color: var(--color-carbon);
+  }
+
+  .navbar-link:hover {
+    color: var(--color-arena);
+  }
+
+  .navbar.scrolled .navbar-link:hover {
+    color: var(--color-terracota);
+  }
+
+  .navbar-cta {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* Hamburger */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .navbar.scrolled .menu-toggle span {
+    background-color: var(--color-carbon);
+  }
+
+  .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--color-blanco-calido);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+
+  .mobile-menu.open {
+    max-height: 300px;
+    padding: 1rem 1.5rem 1.5rem;
+  }
+
+  .mobile-link {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--color-carbon);
+    text-decoration: none;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-arena);
+    display: block;
+  }
+
+  .mobile-cta {
+    margin-top: 1rem;
+    text-align: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .navbar-links { display: none; }
+    .menu-toggle { display: flex; }
+    .mobile-menu { display: flex; }
+  }
+</style>

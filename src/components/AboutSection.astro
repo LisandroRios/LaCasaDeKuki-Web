@@ -1,0 +1,336 @@
+---
+// AboutSection — La Casa de Kuki
+// Historia del hospedaje + FAQ con las preguntas frecuentes reales
+
+const faqs = [
+  {
+    id: 'faq-horarios',
+    question: '¿Cuáles son los horarios de ingreso y salida?',
+    answer: 'El check-in es a partir de las 14:00 hs y el check-out es hasta las 10:00 hs. Este horario nos da el tiempo necesario para dejar cada departamento impecable y ventilado para los próximos huéspedes.',
+  },
+  {
+    id: 'faq-estacionamiento',
+    question: '¿Tienen estacionamiento propio?',
+    answer: 'Sí, el estacionamiento es privado, se encuentra dentro del mismo predio y está incluido en el valor de tu estadía.',
+  },
+  {
+    id: 'faq-mascotas',
+    question: '¿Aceptan mascotas?',
+    answer: '¡Por supuesto! Le hacemos honor a nuestro nombre: somos un alojamiento Pet Friendly y recibimos a tus mascotas con gusto. Solo te pedimos avisarnos al momento de reservar.',
+  },
+  {
+    id: 'faq-pagos',
+    question: '¿Qué medios de pago aceptan?',
+    answer: 'Aceptamos efectivo, transferencias bancarias y tarjetas de crédito. Tené en cuenta que los pagos con tarjeta de crédito tienen un recargo del 15% por costos financieros de la plataforma.',
+  },
+  {
+    id: 'faq-quincho',
+    question: '¿Cómo funciona el uso del quincho compartido?',
+    answer: 'El quincho es de uso libre para todos nuestros huéspedes. Tiene parrilla, vajilla y cocina completa; únicamente pedimos dejar limpio y ordenado lo que se utilice para mantener la buena convivencia.',
+  },
+  {
+    id: 'faq-reserva',
+    question: '¿Cómo se confirma la reserva y cuál es la política de cancelación?',
+    answer: 'Para asegurar tu fecha pedimos una seña del 20% del total mediante transferencia. Si te surge un imprevisto, podés cancelar sin costo y con reintegro de la seña hasta 15 días antes de la fecha de check-in.',
+  },
+];
+---
+
+<section id="nosotros" class="about-section">
+  <div class="section-wrapper about-wrapper">
+
+    <!-- Columna izquierda: Historia -->
+    <div class="about-story">
+      <p class="about-eyebrow">Conocé nuestra historia</p>
+      <h2 class="about-title">La esencia de<br /><em>sentirte en casa</em></h2>
+      <div class="about-divider" aria-hidden="true">
+        <span>✦</span>
+      </div>
+      <p class="about-text">
+        La Casa de Kuki nació con la idea de abrir las puertas de nuestro hogar en Purmamarca para que viajeros de todas partes encuentren un lugar donde bajar el ritmo. El nombre rinde honor a nuestra perra y anfitriona estrella, símbolo de alegría y compañía en este rincón de la Quebrada.
+      </p>
+      <p class="about-text">
+        Acá no sos un número de habitación: te recibimos con trato familiar, sencillez norteña y ese silencio especial del paisaje que te resetea la energía. Queremos que después de caminar las calles de tierra y recorrer los cerros, sientas el alivio y la comodidad de llegar a tu propia casa.
+      </p>
+
+      <!-- Departamentos destacados -->
+      <div class="about-deptos">
+        <div class="depto-card">
+          <div class="depto-name">
+            <span class="depto-sun" aria-hidden="true">☀️</span>
+            <strong>Depto Inti</strong>
+          </div>
+          <p>Espacios cómodos y cálidos pensados para el verdadero descanso tras una jornada de excursión. Ropa de cama de calidad, baño privado y pava eléctrica con kit de infusiones regionales.</p>
+        </div>
+        <div class="depto-card">
+          <div class="depto-name">
+            <span class="depto-moon" aria-hidden="true">🌙</span>
+            <strong>Depto Killa</strong>
+          </div>
+          <p>Espacios cómodos y cálidos pensados para el verdadero descanso tras una jornada de excursión. Ropa de cama de calidad, baño privado y pava eléctrica con kit de infusiones regionales.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna derecha: FAQ -->
+    <div class="about-faq">
+      <p class="faq-eyebrow">Antes de reservar</p>
+      <h3 class="faq-title">Preguntas<br /><em>frecuentes</em></h3>
+
+      <div class="faq-list" role="list">
+        {faqs.map((faq) => (
+          <details class="faq-item" id={faq.id} role="listitem">
+            <summary class="faq-question">
+              <span>{faq.question}</span>
+              <span class="faq-chevron" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .about-section {
+    padding: 6rem 0;
+    background-color: var(--color-blanco-calido);
+  }
+
+  .about-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* Historia */
+  .about-story {}
+
+  .about-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: var(--color-terracota);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .about-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: var(--color-marron-dark);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-title em {
+    font-style: italic;
+    color: var(--color-terracota);
+    display: block;
+  }
+
+  .about-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-terracota);
+    font-size: 1.1rem;
+  }
+
+  .about-divider::before,
+  .about-divider::after {
+    content: '';
+    height: 1px;
+    width: 48px;
+    background: linear-gradient(90deg, transparent, var(--color-terracota));
+  }
+
+  .about-divider::after {
+    background: linear-gradient(90deg, var(--color-terracota), transparent);
+  }
+
+  .about-text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-carbon-light);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Cards de departamentos */
+  .about-deptos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .depto-card {
+    background: var(--color-arena-light);
+    border: 1px solid var(--color-arena);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .depto-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(193, 96, 58, 0.1);
+  }
+
+  .depto-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.625rem;
+  }
+
+  .depto-name strong {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    color: var(--color-marron-dark);
+  }
+
+  .depto-sun, .depto-moon {
+    font-size: 1.125rem;
+  }
+
+  .depto-card p {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-carbon-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* FAQ */
+  .about-faq {
+    position: sticky;
+    top: 6rem;
+  }
+
+  .faq-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: var(--color-terracota);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .faq-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-marron-dark);
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+
+  .faq-title em {
+    font-style: italic;
+    color: var(--color-terracota);
+    display: block;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    background: white;
+    border: 1.5px solid var(--color-arena);
+    border-radius: 0.875rem;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .faq-item[open] {
+    border-color: var(--color-terracota-light);
+    box-shadow: 0 4px 16px rgba(193, 96, 58, 0.1);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.125rem 1.25rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--color-carbon);
+    list-style: none;
+    user-select: none;
+    transition: color 0.2s ease;
+  }
+
+  .faq-question::-webkit-details-marker { display: none; }
+
+  .faq-item[open] .faq-question {
+    color: var(--color-terracota);
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    color: var(--color-terracota);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.25rem 1.125rem;
+    border-top: 1px solid var(--color-arena);
+  }
+
+  .faq-answer p {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-carbon-light);
+    line-height: 1.75;
+    margin: 0.875rem 0 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .about-wrapper {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .about-faq {
+      position: static;
+    }
+
+    .about-deptos {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-deptos {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

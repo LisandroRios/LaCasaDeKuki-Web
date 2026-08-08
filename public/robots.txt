@@ -1,0 +1,15 @@
+---
+# Reglas para Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Todas las demás arañas
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /.env
+Disallow: /src/
+
+# Sitemap
+Sitemap: https://lacasadekuki.com.ar/sitemap-index.xml

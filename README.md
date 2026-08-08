@@ -1,56 +1,43 @@
-# La Casa de Kuki — Sitio Web Oficial (MVP V1)
+# Astro Starter Kit: Minimal
 
-Landing page oficial del hospedaje "La Casa de Kuki" en Purmamarca, Jujuy. 
-Diseñada para captar reservas directas, posicionar en motores de búsqueda/IA y brindar confianza a los viajeros.
+```sh
+npm create astro@latest -- --template minimal
+```
 
-## 1. Stack Recomendado
-- **Framework:** Astro + Tailwind CSS (Carga ultra rápida, SEO optimizado y mobile-first).
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-## 2. Identidad Visual
-- **Estilo:** Cálido, rústico-moderno, limpio y profesional.
-- **Colores:** Tonos terracota, arena, blanco cálido y texto carbón.
+## 🚀 Project Structure
 
-## 3. Secciones de la Landing Page
-1. **Hero Section:** Foto principal impactante, título claro ("Hospedaje en Purmamarca, Jujuy") y botón directo a consulta.
-2. **Sobre el Hospedaje / Galería:** Muestra dinámica de departamentos, quincho, estacionamiento y vistas.
-3. **Servicios y Comodidades:** Wi-Fi, estacionamiento, info sobre traslados/excursiones.
-4. **Reseñas de Huéspedes:** Testimonios destacados y puntuación.
-5. **Formulario de Consulta (CTA Principal):**
-   - Campos: Nombre, Cantidad de huéspedes, Fecha de ingreso/egreso, Teléfono.
-   - Acción: Redirección con mensaje preformateado a WhatsApp Business.
-6. **Footer:** Redes sociales (Instagram, Google Maps) y contacto directo.
-
-## 4. Estructura de Proyecto Esperada (Astro)
+Inside of your Astro project, you'll see the following folders and files:
 
 ```text
 /
 ├── public/
-│   └── images/
-│       ├── deptos/
-│       ├── quincho/
-│       ├── estacionamiento/
-│       └── vistas/
 ├── src/
-│   ├── components/
-│   │   ├── Hero.astro
-│   │   ├── Gallery.astro
-│   │   ├── Amenities.astro
-│   │   ├── Reviews.astro
-│   │   ├── ContactForm.astro
-│   │   └── Footer.astro
-│   ├── layouts/
-│   │   └── Layout.astro
 │   └── pages/
 │       └── index.astro
-├── package.json
-└── README.md
+└── package.json
 ```
 
-## 5. Requerimientos de Seguridad
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-- **Manejo de Secretos (.env):** Ninguna clave de API, token o credencial debe estar directamente en el código fuente. Todo debe ir en `.env` (incluido en `.gitignore`).
-- **Sanitización de Inputs:** Validar y limpiar los campos del formulario de contacto para prevenir Cross-Site Scripting (XSS) e inyección de encabezados.
-- **Seguridad en Formularios:** Implementar rate limiting básico o protección bot (Honeypot field / reCAPTCHA) para evitar spam masivo.
-- **Headers de Seguridad:** Configurar la app para soportar los headers estándar de seguridad (`X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Content-Security-Policy`).
-- **NPM Audit:** Usar dependencias actualizadas y sin vulnerabilidades conocidas (`npm audit`).
-- **HTTPS:** Todo el tráfico debe ser forzado sobre HTTPS (cifrado TLS/SSL).
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

@@ -1,0 +1,363 @@
+---
+// Footer — La Casa de Kuki
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer" role="contentinfo">
+  <!-- Wave decorativo superior -->
+  <div class="footer-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,25 1440,30 L1440,60 L0,60 Z" fill="#2C1A0E"/>
+    </svg>
+  </div>
+
+  <div class="footer-body">
+    <div class="section-wrapper footer-inner">
+      <!-- Logo y descripción -->
+      <div class="footer-brand">
+        <a href="/" class="footer-logo-link" aria-label="La Casa de Kuki - Inicio">
+          <img src="/images/logo.png" alt="La Casa de Kuki" width="56" height="56" class="footer-logo-img" />
+          <div>
+            <span class="footer-brand-name">La Casa de Kuki</span>
+            <span class="footer-brand-tagline">Purmamarca · Jujuy · Argentina</span>
+          </div>
+        </a>
+        <p class="footer-brand-desc">
+          Hospedaje cálido y auténtico en el corazón de la Quebrada de Humahuaca. 
+          Donde las montañas de colores son tu despertador cada mañana.
+        </p>
+
+        <!-- Redes sociales -->
+        <div class="footer-social" aria-label="Redes sociales">
+          <a
+            href="https://www.instagram.com/lacasadekuki.purmamarca/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-social-btn"
+            id="footer-instagram-link"
+            aria-label="Ver Instagram de La Casa de Kuki"
+          >
+            <!-- Instagram SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            Instagram
+          </a>
+
+          <a
+            href="https://www.google.com.ar/maps/place/La+Casa+de+Kuki+Purmamarca/@-23.7484756,-65.4966371,17z"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-social-btn"
+            id="footer-maps-link"
+            aria-label="Ver La Casa de Kuki en Google Maps"
+          >
+            <!-- Maps SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            Google Maps
+          </a>
+
+          <a
+            href="https://wa.me/5493884616542"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-social-btn footer-wa-btn"
+            id="footer-whatsapp-link"
+            aria-label="Contactar por WhatsApp"
+          >
+            <!-- WhatsApp SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Links rápidos -->
+      <div class="footer-links-col">
+        <h3 class="footer-col-title">Navegación</h3>
+        <nav aria-label="Links del footer">
+          <ul class="footer-links-list">
+            <li><a href="#inicio" class="footer-link">Inicio</a></li>
+            <li><a href="#galeria" class="footer-link">Galería</a></li>
+            <li><a href="#servicios" class="footer-link">Servicios</a></li>
+            <li><a href="#resenas" class="footer-link">Reseñas</a></li>
+            <li><a href="#contacto" class="footer-link">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Info de contacto -->
+      <div class="footer-contact-col">
+        <h3 class="footer-col-title">Contacto</h3>
+        <ul class="footer-contact-list">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
+            </svg>
+            <a href="https://wa.me/5493884616542" target="_blank" rel="noopener noreferrer" class="footer-contact-link">+54 9 3884 616542</a>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <span class="footer-contact-text">Purmamarca, Jujuy, Argentina</span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/>
+            </svg>
+            <span class="footer-contact-text">Check-in: 14:00 hs · Check-out: 11:00 hs</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <div class="section-wrapper footer-bottom-inner">
+      <p class="footer-copyright">
+        © {currentYear} La Casa de Kuki · Purmamarca, Jujuy · Todos los derechos reservados.
+      </p>
+      <p class="footer-made-with">
+        Hecho con ❤️ en Argentina
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: #1A0E08;
+    position: relative;
+  }
+
+  .footer-wave {
+    display: block;
+    line-height: 0;
+    margin-top: -1px;
+  }
+
+  .footer-wave svg {
+    width: 100%;
+    height: 60px;
+    display: block;
+  }
+
+  .footer-body {
+    padding: 4rem 0 3rem;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* Brand */
+  .footer-brand {}
+
+  .footer-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    text-decoration: none;
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-logo-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-terracota);
+  }
+
+  .footer-brand-name {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-arena);
+    line-height: 1.2;
+  }
+
+  .footer-brand-tagline {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-brand-desc {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+    max-width: 360px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.8);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .footer-social-btn:hover {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border-color: rgba(255,255,255,0.25);
+    transform: translateY(-1px);
+  }
+
+  .footer-wa-btn:hover {
+    background: #25D366;
+    border-color: #25D366;
+    color: white;
+  }
+
+  /* Columns */
+  .footer-col-title {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-arena);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-link {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .footer-link::before {
+    content: '→';
+    font-size: 0.75rem;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .footer-link:hover {
+    color: var(--color-arena);
+  }
+
+  .footer-link:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .footer-contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .footer-contact-list li svg {
+    color: var(--color-terracota);
+    margin-top: 0.125rem;
+    flex-shrink: 0;
+  }
+
+  .footer-contact-link {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-arena);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-contact-link:hover { color: white; }
+
+  .footer-contact-text {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  /* Bottom bar */
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 1.25rem 0;
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-copyright,
+  .footer-made-with {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.4);
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: span 2; }
+  }
+
+  @media (max-width: 600px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-brand { grid-column: auto; }
+    .footer-bottom-inner { flex-direction: column; text-align: center; }
+  }
+</style>
