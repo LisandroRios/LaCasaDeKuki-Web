@@ -44,3 +44,13 @@ Diseñada para captar reservas directas, posicionar en motores de búsqueda/IA y
 │       └── index.astro
 ├── package.json
 └── README.md
+```
+
+## 5. Requerimientos de Seguridad
+
+- **Manejo de Secretos (.env):** Ninguna clave de API, token o credencial debe estar directamente en el código fuente. Todo debe ir en `.env` (incluido en `.gitignore`).
+- **Sanitización de Inputs:** Validar y limpiar los campos del formulario de contacto para prevenir Cross-Site Scripting (XSS) e inyección de encabezados.
+- **Seguridad en Formularios:** Implementar rate limiting básico o protección bot (Honeypot field / reCAPTCHA) para evitar spam masivo.
+- **Headers de Seguridad:** Configurar la app para soportar los headers estándar de seguridad (`X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Content-Security-Policy`).
+- **NPM Audit:** Usar dependencias actualizadas y sin vulnerabilidades conocidas (`npm audit`).
+- **HTTPS:** Todo el tráfico debe ser forzado sobre HTTPS (cifrado TLS/SSL).
