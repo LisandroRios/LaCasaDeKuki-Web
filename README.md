@@ -19,3 +19,28 @@ Diseñada para captar reservas directas, posicionar en motores de búsqueda/IA y
    - Campos: Nombre, Cantidad de huéspedes, Fecha de ingreso/egreso, Teléfono.
    - Acción: Redirección con mensaje preformateado a WhatsApp Business.
 6. **Footer:** Redes sociales (Instagram, Google Maps) y contacto directo.
+
+## 4. Estructura de Proyecto Esperada (Astro)
+
+```text
+/
+├── public/
+│   └── images/
+│       ├── deptos/
+│       ├── quincho/
+│       ├── estacionamiento/
+│       └── vistas/
+├── src/
+│   ├── components/
+│   │   ├── Hero.astro
+│   │   ├── Gallery.astro
+│   │   ├── Amenities.astro
+│   │   ├── Reviews.astro
+│   │   ├── ContactForm.astro
+│   │   └── Footer.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+├── package.json
+└── README.md
