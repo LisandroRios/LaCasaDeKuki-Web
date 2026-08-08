@@ -18,9 +18,24 @@ La Casa de Kuki nació con la idea de abrir las puertas de nuestro hogar en Purm
 Acá no sos un número de habitación: te recibimos con trato familiar, sencillez norteña y ese silencio especial del paisaje que te resetea la energía. Queremos que después de caminar las calles de tierra y recorrer los cerros, sientas el alivio y la comodidad de llegar a tu propia casa.
 
 3. Descripción de Espacios (Cards / Galería)
-Departamentos (Inti y Killa)
+Departamentos 
 
-Espacios cómodos, cálidos y pensados para el verdadero descanso tras una jornada de excursión. Cada departamento cuenta con ropa de cama de calidad, baño privado y pava eléctrica con un kit de infusiones regionales a tu disposición.
+### Departamento Inti (Hasta 6 personas)
+Espacioso y completamente equipado para familias o grupos. 
+- **Dormitorios:** 1 cama matrimonial + 2 camas cuchetas (1½ plaza).
+- **Comedor y equipamiento:** Mesa, sillas, heladera, microondas, vajilla, pava eléctrica y kit de infusiones.
+- **Confort y entretenimiento:** TV con Chromecast, Wi-Fi y baño privado con agua caliente (incluye toallas y amenities de aseo).
+- **Servicios incluidos:** Estacionamiento privado y acceso libre al quincho compartido para cocinar.
+- **Horarios:** Check-in desde las 14:00 hs (con guardado de equipaje previo) / Check-out hasta las 12:00 hs.
+
+
+### Departamento Killa (Hasta 4 personas)
+Cálido y funcional, ideal para familias pequeñas o parejas.
+- **Dormitorios:** 1 cama matrimonial + 1 cama cucheta.
+- **Equipamiento en depto:** Pava eléctrica y kit de infusiones.
+- **Confort:** Wi-Fi y baño privado con agua caliente (incluye toallas y amenities de aseo).
+- **Servicios incluidos:** Estacionamiento privado y acceso libre al quincho compartido para cocinar y comer.
+- **Horarios:** Check-in desde las 14:00 hs (con guardado de equipaje previo) / Check-out hasta las 12:00 hs.
 
 Quincho compartido
 
@@ -44,7 +59,7 @@ Kit de infusiones: Pava eléctrica y selección de tés y mates lista para usar 
 5. Preguntas Frecuentes (FAQ)
 ¿Cuáles son los horarios de ingreso y salida?
 
-El check-in es a partir de las 14:00 hs y el check-out es hasta las 10:00 hs. Este horario nos da el tiempo necesario para dejar cada departamento impecable y ventilado para los próximos huéspedes.
+El check-in es a partir de las 14:00 hs y el check-out es hasta las 12:00 hs. Este horario nos da el tiempo necesario para dejar cada departamento impecable y ventilado para los próximos huéspedes.
 
 ¿Tienen estacionamiento propio?
 

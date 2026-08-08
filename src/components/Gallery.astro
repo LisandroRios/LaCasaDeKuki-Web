@@ -1,35 +1,157 @@
 ---
 // Gallery Section — La Casa de Kuki
-// Las imágenes en public/images/ son placeholders — reemplazarlas con fotos reales
+// Imágenes reales organizadas por departamento y espacios
+
+const tabs = [
+  { id: 'todos', label: 'Todos' },
+  { id: 'inti', label: 'Depto Inti ☀️' },
+  { id: 'killa', label: 'Depto Killa 🌙' },
+  { id: 'exterior', label: 'Exterior' },
+];
 
 const galleryItems = [
+  // Departamento Inti
   {
-    src: '/images/deptos/depto1.png',
-    alt: 'Depto Inti — espacio cómodo y cálido con ropa de cama de calidad y baño privado',
+    src: '/images/inti/IMG_3150.PNG',
+    alt: 'Depto Inti — ambiente principal cálido y confortable',
     label: 'Depto Inti',
-    category: 'deptos',
+    category: 'inti',
     span: 'col-span-2',
   },
   {
-    src: '/images/quincho/quincho1.png',
-    alt: 'Quincho compartido con parrilla, cocina completa y vajilla lista para usar',
-    label: 'Quincho',
-    category: 'quincho',
+    src: '/images/inti/IMG_3151.PNG',
+    alt: 'Depto Inti — dormitorio con ropa de cama de calidad',
+    label: 'Depto Inti',
+    category: 'inti',
     span: '',
   },
   {
-    src: '/images/estacionamiento/estacionamiento1.png',
-    alt: 'Estacionamiento privado y seguro dentro del predio, sin costo adicional',
-    label: 'Estacionamiento',
-    category: 'estacionamiento',
+    src: '/images/inti/IMG_3152.PNG',
+    alt: 'Depto Inti — baño privado',
+    label: 'Depto Inti',
+    category: 'inti',
     span: '',
   },
   {
-    src: '/images/vistas/vistas1.png',
-    alt: 'Vista privilegiada al Cerro de los Siete Colores desde la propiedad',
-    label: 'Vistas',
-    category: 'vistas',
+    src: '/images/inti/IMG_3153.PNG',
+    alt: 'Depto Inti — espacio interior luminoso',
+    label: 'Depto Inti',
+    category: 'inti',
+    span: '',
+  },
+  {
+    src: '/images/inti/IMG_3154.PNG',
+    alt: 'Depto Inti — detalles del ambiente',
+    label: 'Depto Inti',
+    category: 'inti',
+    span: '',
+  },
+  {
+    src: '/images/inti/IMG_3155.PNG',
+    alt: 'Depto Inti — kit de infusiones regionales y pava eléctrica',
+    label: 'Depto Inti',
+    category: 'inti',
+    span: '',
+  },
+  {
+    src: '/images/inti/IMG_3156.PNG',
+    alt: 'Depto Inti — vista del living',
+    label: 'Depto Inti',
+    category: 'inti',
+    span: '',
+  },
+  {
+    src: '/images/inti/IMG_3157.PNG',
+    alt: 'Depto Inti — rincón de descanso',
+    label: 'Depto Inti',
+    category: 'inti',
+    span: '',
+  },
+  {
+    src: '/images/inti/IMG_3158.PNG',
+    alt: 'Depto Inti — ambiente equipado',
+    label: 'Depto Inti',
+    category: 'inti',
+    span: '',
+  },
+  {
+    src: '/images/inti/IMG_3159.PNG',
+    alt: 'Depto Inti — detalle final del espacio',
+    label: 'Depto Inti',
+    category: 'inti',
+    span: '',
+  },
+  // Departamento Killa
+  {
+    src: '/images/killa/IMG_3160.PNG',
+    alt: 'Depto Killa — ambiente principal cálido y confortable',
+    label: 'Depto Killa',
+    category: 'killa',
     span: 'col-span-2',
+  },
+  {
+    src: '/images/killa/IMG_3161.PNG',
+    alt: 'Depto Killa — dormitorio con ropa de cama de calidad',
+    label: 'Depto Killa',
+    category: 'killa',
+    span: '',
+  },
+  {
+    src: '/images/killa/IMG_3162.PNG',
+    alt: 'Depto Killa — baño privado',
+    label: 'Depto Killa',
+    category: 'killa',
+    span: '',
+  },
+  {
+    src: '/images/killa/IMG_3163.PNG',
+    alt: 'Depto Killa — espacio interior luminoso',
+    label: 'Depto Killa',
+    category: 'killa',
+    span: '',
+  },
+  {
+    src: '/images/killa/IMG_3164.PNG',
+    alt: 'Depto Killa — detalles del ambiente',
+    label: 'Depto Killa',
+    category: 'killa',
+    span: '',
+  },
+  {
+    src: '/images/killa/IMG_3165.PNG',
+    alt: 'Depto Killa — kit de infusiones y comodidades',
+    label: 'Depto Killa',
+    category: 'killa',
+    span: '',
+  },
+  {
+    src: '/images/killa/IMG_3166.PNG',
+    alt: 'Depto Killa — rincón de descanso',
+    label: 'Depto Killa',
+    category: 'killa',
+    span: '',
+  },
+  {
+    src: '/images/killa/1000287697.JPG',
+    alt: 'Depto Killa — vista general del departamento',
+    label: 'Depto Killa',
+    category: 'killa',
+    span: '',
+  },
+  // Exterior
+  {
+    src: '/images/exterior/1000472082.JPG',
+    alt: 'Exterior — frente de La Casa de Kuki en Purmamarca',
+    label: 'Exterior',
+    category: 'exterior',
+    span: 'col-span-2',
+  },
+  {
+    src: '/images/exterior/1000367568.JPG',
+    alt: 'Exterior — jardín y estacionamiento privado dentro del predio',
+    label: 'Exterior',
+    category: 'exterior',
+    span: '',
   },
 ];
 ---
@@ -43,8 +165,23 @@ const galleryItems = [
       <div class="section-divider"><span>✦</span></div>
       <p class="section-subtitle">
         Departamentos Inti y Killa, quincho compartido, estacionamiento privado
-        y vistas al Cerro de los Siete Colores — todo pensado para que llegues y te sientas en casa.
+        y vistas al Cerro de los Siete Colores — todo pensado para que llegués y te sientas en casa.
       </p>
+    </div>
+
+    <!-- Filtros por categoría -->
+    <div class="gallery-tabs" role="tablist" aria-label="Filtrar galería por espacio">
+      {tabs.map((tab) => (
+        <button
+          class={`gallery-tab ${tab.id === 'todos' ? 'active' : ''}`}
+          role="tab"
+          aria-selected={tab.id === 'todos' ? 'true' : 'false'}
+          data-filter={tab.id}
+          id={`tab-${tab.id}`}
+        >
+          {tab.label}
+        </button>
+      ))}
     </div>
 
     <!-- Grid de galería -->
@@ -54,7 +191,7 @@ const galleryItems = [
           class={`gallery-item ${item.span}`}
           role="listitem"
           data-category={item.category}
-          style={`animation-delay: ${index * 0.1}s`}
+          style={`animation-delay: ${index * 0.05}s`}
         >
           <button
             class="gallery-btn"
@@ -86,11 +223,8 @@ const galleryItems = [
       ))}
     </div>
 
-    <!-- Nota de reemplazo de fotos (visible solo en desarrollo con modo debug) -->
-    <p class="gallery-note">
-      📸 <strong>¿Sos el dueño?</strong> Reemplazá las imágenes en 
-      <code>public/images/</code> con las fotos reales del hospedaje.
-    </p>
+    <!-- Contador de fotos -->
+    <p class="gallery-count" id="gallery-count" aria-live="polite"></p>
   </div>
 
   <!-- Lightbox -->
@@ -104,6 +238,9 @@ const galleryItems = [
       </button>
       <img id="lightbox-img" src="" alt="" class="lightbox-img" />
       <p id="lightbox-caption" class="lightbox-caption"></p>
+      <div class="lightbox-counter">
+        <span id="lightbox-counter-text"></span>
+      </div>
       <div class="lightbox-nav">
         <button id="lightbox-prev" class="lightbox-nav-btn" aria-label="Foto anterior">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -121,7 +258,55 @@ const galleryItems = [
 </section>
 
 <script>
-  // Lightbox functionality
+  // --- Tab filtering ---
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.gallery-tab');
+  const allItems = document.querySelectorAll<HTMLElement>('.gallery-item');
+  const galleryCount = document.getElementById('gallery-count');
+
+  function getVisibleItems(): HTMLElement[] {
+    return Array.from(allItems).filter(item => !item.classList.contains('hidden'));
+  }
+
+  function updateCount() {
+    const visible = getVisibleItems().length;
+    const total = allItems.length;
+    if (galleryCount) {
+      galleryCount.textContent = visible === total
+        ? `Mostrando ${total} fotos`
+        : `Mostrando ${visible} de ${total} fotos`;
+    }
+  }
+
+  function filterGallery(filter: string) {
+    allItems.forEach(item => {
+      const cat = item.dataset.category || '';
+      const show = filter === 'todos' || cat === filter;
+      if (show) {
+        item.classList.remove('hidden');
+        item.style.display = '';
+      } else {
+        item.classList.add('hidden');
+        item.style.display = 'none';
+      }
+    });
+    updateCount();
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      filterGallery(tab.dataset.filter || 'todos');
+    });
+  });
+
+  updateCount();
+
+  // --- Lightbox ---
   const lightbox = document.getElementById('lightbox') as HTMLElement | null;
   const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
   const lightboxCaption = document.getElementById('lightbox-caption');
@@ -129,6 +314,7 @@ const galleryItems = [
   const lightboxBackdrop = document.getElementById('lightbox-backdrop');
   const lightboxPrev = document.getElementById('lightbox-prev');
   const lightboxNext = document.getElementById('lightbox-next');
+  const lightboxCounterText = document.getElementById('lightbox-counter-text');
 
   const galleryButtons = document.querySelectorAll<HTMLButtonElement>('.gallery-btn');
   let currentIndex = 0;
@@ -137,12 +323,20 @@ const galleryItems = [
     alt: btn.dataset.alt || '',
   }));
 
+  function getActiveButtons(): HTMLButtonElement[] {
+    return Array.from(galleryButtons).filter(btn => {
+      const parent = btn.closest('.gallery-item') as HTMLElement | null;
+      return parent && !parent.classList.contains('hidden');
+    });
+  }
+
   function openLightbox(index: number) {
     currentIndex = index;
     if (!lightbox || !lightboxImg || !lightboxCaption) return;
     lightboxImg.src = items[index].src;
     lightboxImg.alt = items[index].alt;
     lightboxCaption.textContent = items[index].alt;
+    updateLightboxCounter();
     lightbox.hidden = false;
     document.body.style.overflow = 'hidden';
     lightbox.focus();
@@ -154,12 +348,24 @@ const galleryItems = [
     document.body.style.overflow = '';
   }
 
+  function updateLightboxCounter() {
+    const active = getActiveButtons();
+    const pos = active.findIndex(btn => parseInt(btn.dataset.index || '0') === currentIndex);
+    if (lightboxCounterText) {
+      lightboxCounterText.textContent = `${pos + 1} / ${active.length}`;
+    }
+  }
+
   function navigate(direction: number) {
-    currentIndex = (currentIndex + direction + items.length) % items.length;
+    const active = getActiveButtons();
+    const pos = active.findIndex(btn => parseInt(btn.dataset.index || '0') === currentIndex);
+    const nextPos = (pos + direction + active.length) % active.length;
+    currentIndex = parseInt(active[nextPos].dataset.index || '0');
     if (!lightboxImg || !lightboxCaption) return;
     lightboxImg.src = items[currentIndex].src;
     lightboxImg.alt = items[currentIndex].alt;
     lightboxCaption.textContent = items[currentIndex].alt;
+    updateLightboxCounter();
   }
 
   galleryButtons.forEach((btn, i) => {
@@ -179,7 +385,7 @@ const galleryItems = [
   });
 
   // Intersection Observer para animaciones de entrada
-  const galleryItems = document.querySelectorAll('.gallery-item');
+  const galleryItemEls = document.querySelectorAll('.gallery-item');
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach(entry => {
@@ -189,13 +395,13 @@ const galleryItems = [
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.05 }
   );
 
-  galleryItems.forEach(item => {
+  galleryItemEls.forEach(item => {
     (item as HTMLElement).style.opacity = '0';
-    (item as HTMLElement).style.transform = 'translateY(24px)';
-    (item as HTMLElement).style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    (item as HTMLElement).style.transform = 'translateY(20px)';
+    (item as HTMLElement).style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(item);
   });
 </script>
@@ -208,7 +414,7 @@ const galleryItems = [
 
   .gallery-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .gallery-eyebrow {
@@ -227,12 +433,48 @@ const galleryItems = [
     display: block;
   }
 
+  /* Tabs de filtro */
+  .gallery-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .gallery-tab {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    border: 1.5px solid var(--color-arena);
+    background: transparent;
+    color: var(--color-carbon-light);
+    cursor: pointer;
+    transition: all 0.22s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .gallery-tab:hover {
+    border-color: var(--color-terracota);
+    color: var(--color-terracota);
+    background: rgba(193, 96, 58, 0.06);
+  }
+
+  .gallery-tab.active {
+    background: var(--color-terracota);
+    border-color: var(--color-terracota);
+    color: white;
+    box-shadow: 0 4px 14px rgba(193, 96, 58, 0.3);
+  }
+
   /* Grid */
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .gallery-item {
@@ -318,23 +560,14 @@ const galleryItems = [
     text-transform: uppercase;
   }
 
-  /* Nota para reemplazar imágenes */
-  .gallery-note {
+  /* Contador */
+  .gallery-count {
     text-align: center;
-    font-size: 0.875rem;
-    color: var(--color-carbon-light);
-    background: var(--color-arena-light);
-    border: 1px dashed var(--color-arena);
-    border-radius: 0.75rem;
-    padding: 1rem 1.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .gallery-note code {
-    background: var(--color-arena);
-    padding: 0.1em 0.4em;
-    border-radius: 0.25rem;
+    font-family: var(--font-body);
     font-size: 0.8125rem;
+    color: var(--color-carbon-light);
+    margin-top: 0.5rem;
+    opacity: 0.7;
   }
 
   /* Lightbox */
@@ -352,8 +585,8 @@ const galleryItems = [
   .lightbox-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(20, 12, 6, 0.92);
-    backdrop-filter: blur(4px);
+    background: rgba(20, 12, 6, 0.94);
+    backdrop-filter: blur(6px);
   }
 
   .lightbox-content {
@@ -369,19 +602,26 @@ const galleryItems = [
 
   .lightbox-img {
     max-width: 100%;
-    max-height: 75vh;
+    max-height: 72vh;
     object-fit: contain;
     border-radius: 0.75rem;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   }
 
   .lightbox-caption {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.75);
     font-family: var(--font-body);
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     text-align: center;
     max-width: 600px;
     margin: 0;
+  }
+
+  .lightbox-counter {
+    color: rgba(255,255,255,0.5);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    letter-spacing: 0.05em;
   }
 
   .lightbox-close {
@@ -424,6 +664,11 @@ const galleryItems = [
 
   .lightbox-nav-btn:hover { background: rgba(255,255,255,0.3); }
 
+  /* Hidden items (filter) */
+  .gallery-item.hidden {
+    display: none;
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
     .gallery-grid {
@@ -440,6 +685,13 @@ const galleryItems = [
     }
     .gallery-item.col-span-2 {
       grid-column: span 1;
+    }
+    .gallery-tabs {
+      gap: 0.5rem;
+    }
+    .gallery-tab {
+      font-size: 0.8125rem;
+      padding: 0.4rem 0.875rem;
     }
   }
 </style>

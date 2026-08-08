@@ -6,7 +6,7 @@ const faqs = [
   {
     id: 'faq-horarios',
     question: '¿Cuáles son los horarios de ingreso y salida?',
-    answer: 'El check-in es a partir de las 14:00 hs y el check-out es hasta las 10:00 hs. Este horario nos da el tiempo necesario para dejar cada departamento impecable y ventilado para los próximos huéspedes.',
+    answer: 'El check-in es a partir de las 14:00 hs (con guardado de equipaje previo si llegás antes) y el check-out es hasta las 12:00 hs. Este horario nos da el tiempo necesario para dejar cada departamento impecable y ventilado para los próximos huéspedes.',
   },
   {
     id: 'faq-estacionamiento',
@@ -56,18 +56,63 @@ const faqs = [
       <!-- Departamentos destacados -->
       <div class="about-deptos">
         <div class="depto-card">
-          <div class="depto-name">
-            <span class="depto-sun" aria-hidden="true">☀️</span>
-            <strong>Depto Inti</strong>
+          <div class="depto-thumb-wrap">
+            <img
+              src="/images/inti/IMG_3150.PNG"
+              alt="Vista del Departamento Inti"
+              class="depto-thumb"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
-          <p>Espacios cómodos y cálidos pensados para el verdadero descanso tras una jornada de excursión. Ropa de cama de calidad, baño privado y pava eléctrica con kit de infusiones regionales.</p>
+          <div class="depto-body">
+            <div class="depto-name">
+              <span class="depto-sun" aria-hidden="true">☀️</span>
+              <strong>Depto Inti</strong>
+              <span class="depto-capacity">Hasta 6 personas</span>
+            </div>
+            <ul class="depto-features">
+              <li><span class="feat-icon">🛏</span> 1 cama matrimonial + 2 camas cuchetas</li>
+              <li><span class="feat-icon">🍽</span> Heladera, microondas y vajilla completa</li>
+              <li><span class="feat-icon">📺</span> TV con Chromecast + Wi-Fi</li>
+              <li><span class="feat-icon">🚿</span> Baño privado con agua caliente y amenities</li>
+              <li><span class="feat-icon">☕</span> Pava eléctrica y kit de infusiones regionales</li>
+              <li><span class="feat-icon">🔥</span> Acceso libre al quincho compartido</li>
+            </ul>
+            <a href="#galeria" class="depto-link" data-gallery-tab="inti" aria-label="Ver fotos del Depto Inti en la galería">
+              Ver fotos
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </a>
+          </div>
         </div>
         <div class="depto-card">
-          <div class="depto-name">
-            <span class="depto-moon" aria-hidden="true">🌙</span>
-            <strong>Depto Killa</strong>
+          <div class="depto-thumb-wrap">
+            <img
+              src="/images/killa/IMG_3160.PNG"
+              alt="Vista del Departamento Killa"
+              class="depto-thumb"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
-          <p>Espacios cómodos y cálidos pensados para el verdadero descanso tras una jornada de excursión. Ropa de cama de calidad, baño privado y pava eléctrica con kit de infusiones regionales.</p>
+          <div class="depto-body">
+            <div class="depto-name">
+              <span class="depto-moon" aria-hidden="true">🌙</span>
+              <strong>Depto Killa</strong>
+              <span class="depto-capacity">Hasta 4 personas</span>
+            </div>
+            <ul class="depto-features">
+              <li><span class="feat-icon">🛏</span> 1 cama matrimonial + 1 cama cucheta</li>
+              <li><span class="feat-icon">☕</span> Pava eléctrica y kit de infusiones regionales</li>
+              <li><span class="feat-icon">📶</span> Wi-Fi incluido</li>
+              <li><span class="feat-icon">🚿</span> Baño privado con agua caliente y amenities</li>
+              <li><span class="feat-icon">🔥</span> Acceso libre al quincho compartido</li>
+            </ul>
+            <a href="#galeria" class="depto-link" data-gallery-tab="killa" aria-label="Ver fotos del Depto Killa en la galería">
+              Ver fotos
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -181,20 +226,100 @@ const faqs = [
     background: var(--color-arena-light);
     border: 1px solid var(--color-arena);
     border-radius: 1rem;
-    padding: 1.25rem;
+    overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .depto-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(193, 96, 58, 0.1);
+    box-shadow: 0 8px 24px rgba(193, 96, 58, 0.12);
+  }
+
+  .depto-thumb-wrap {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+
+  .depto-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+
+  .depto-card:hover .depto-thumb {
+    transform: scale(1.05);
+  }
+
+  .depto-body {
+    padding: 1rem 1.25rem 1.25rem;
   }
 
   .depto-name {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 0.625rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .depto-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.875rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-terracota);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: gap 0.2s ease, opacity 0.2s ease;
+  }
+
+  .depto-link:hover {
+    gap: 0.5rem;
+    opacity: 0.8;
+  }
+
+  .depto-capacity {
+    margin-left: auto;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-terracota);
+    background: rgba(193, 96, 58, 0.1);
+    padding: 0.15rem 0.6rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+
+  .depto-features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .depto-features li {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-carbon-light);
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .feat-icon {
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    width: 1.2rem;
+    text-align: center;
   }
 
   .depto-name strong {
@@ -334,3 +459,23 @@ const faqs = [
     }
   }
 </style>
+
+<script>
+  // Vincula los links "Ver fotos" de cada depto con el tab correspondiente en la galería
+  document.querySelectorAll<HTMLAnchorElement>('a[data-gallery-tab]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tabId = (link as HTMLAnchorElement).dataset.galleryTab;
+      // Navegar a la galería
+      const gallery = document.getElementById('galeria');
+      if (gallery) {
+        gallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Esperar a que llegue el scroll y luego activar el tab
+        setTimeout(() => {
+          const tab = document.querySelector<HTMLButtonElement>(`.gallery-tab[data-filter="${tabId}"]`);
+          if (tab) tab.click();
+        }, 500);
+      }
+    });
+  });
+</script>
