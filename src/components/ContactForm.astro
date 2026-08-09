@@ -88,8 +88,7 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
         </div>
 
-        <div class="form-row">
-          <div class="form-group">
+        <div class="form-group">
             <label class="form-label" for="nombre">Nombre completo <span class="required" aria-hidden="true">*</span></label>
             <input
               type="text"
@@ -104,22 +103,6 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
               aria-required="true"
             />
           </div>
-
-          <div class="form-group">
-            <label class="form-label" for="telefono">Teléfono <span class="required" aria-hidden="true">*</span></label>
-            <input
-              type="tel"
-              id="telefono"
-              name="telefono"
-              class="form-input"
-              placeholder="Ej: +54 9 11 1234 5678"
-              required
-              maxlength="30"
-              autocomplete="tel"
-              aria-required="true"
-            />
-          </div>
-        </div>
 
         <div class="form-group">
           <label class="form-label" for="huespedes">Cantidad de huéspedes <span class="required" aria-hidden="true">*</span></label>
@@ -166,17 +149,6 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="form-label" for="mensaje">Comentarios adicionales</label>
-          <textarea
-            id="mensaje"
-            name="mensaje"
-            class="form-input form-textarea"
-            placeholder="Ej: Viajamos con un bebé, necesitamos cuna..."
-            maxlength="500"
-            rows="3"
-          ></textarea>
-        </div>
 
         <!-- Error message -->
         <div id="form-error" class="form-error" role="alert" aria-live="polite" hidden></div>
@@ -202,7 +174,7 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
   const errorDiv = document.getElementById('form-error');
   const submitBtn = document.getElementById('form-submit-btn');
 
-  // Sanitización básica XSS: escapa caracteres peligrosos
+  // Sanitización básica XSS
   function sanitize(str) {
     return String(str)
       .trim()
@@ -211,11 +183,6 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
         '"': '&quot;', "'": '&#x27;', '`': '&#x60;'
       })[c] || c)
       .substring(0, 500);
-  }
-
-  // Validación de teléfono: solo dígitos, espacios, +, -, ()
-  function isValidPhone(phone) {
-    return /^[\d\s\+\-\(\)]{7,30}$/.test(phone.trim());
   }
 
   // Fechas: ingreso debe ser antes que egreso
@@ -256,29 +223,18 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
 
     // Verificar honeypot (anti-spam)
     const honeypot = (document.getElementById('website')).value;
-    if (honeypot) {
-      // Es un bot, silenciosamente ignorar
-      return;
-    }
+    if (honeypot) return;
 
     // Obtener y sanitizar valores
     const nombre = sanitize((document.getElementById('nombre')).value);
-    const telefono = sanitize((document.getElementById('telefono')).value);
     const huespedes = sanitize((document.getElementById('huespedes')).value);
     const ingreso = sanitize((document.getElementById('ingreso')).value);
     const egreso = sanitize((document.getElementById('egreso')).value);
-    const mensaje = sanitize((document.getElementById('mensaje')).value);
 
     // Validaciones
     if (nombre.length < 2) {
       showError('Por favor, ingresá tu nombre completo (mínimo 2 caracteres).');
       document.getElementById('nombre')?.focus();
-      return;
-    }
-
-    if (!isValidPhone(telefono)) {
-      showError('Por favor, ingresá un número de teléfono válido.');
-      document.getElementById('telefono')?.focus();
       return;
     }
 
@@ -313,18 +269,16 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
       ``,
       `📋 *Datos de consulta:*`,
       `• Nombre: ${nombre}`,
-      `• Teléfono: ${telefono}`,
       `• Huéspedes: ${huespedes} persona(s)`,
       `• Ingreso: ${formatDate(ingreso)}`,
       `• Egreso: ${formatDate(egreso)} (${nights} noche${nights !== 1 ? 's' : ''})`,
-      mensaje ? `• Comentarios: ${mensaje}` : '',
       ``,
       `¿Tienen disponibilidad? ¡Gracias!`,
-    ].filter(Boolean).join('\n');
+    ].join('\n');
 
     const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
 
-    // Feedback visual antes de redirigir
+    // Feedback visual
     if (submitBtn) {
       submitBtn.textContent = 'Redirigiendo a WhatsApp...';
       submitBtn.setAttribute('disabled', 'true');
@@ -332,7 +286,6 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
 
     setTimeout(() => {
       window.open(waUrl, '_blank', 'noopener,noreferrer');
-      // Restaurar botón
       if (submitBtn) {
         submitBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/></svg> Enviar consulta por WhatsApp`;
         submitBtn.removeAttribute('disabled');

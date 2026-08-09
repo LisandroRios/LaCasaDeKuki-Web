@@ -1,0 +1,460 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const whatsappNumber = '5493884616542';
+const whatsappMessage = encodeURIComponent('¡Hola! Vi la web de La Casa de Kuki. Me gustaría saber más sobre el hospedaje y hacer una reserva.');
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+---
+
+<Layout
+  title="Nuestra Historia — La Casa de Kuki · Hospedaje en Purmamarca"
+  description="Conocé la historia de La Casa de Kuki, un refugio familiar en Purmamarca, Jujuy, donde el silencio de los cerros y la calidez del hogar se combinan para darte la bienvenida."
+>
+  <!-- Header de página -->
+  <header class="nosotros-hero">
+    <div class="nosotros-hero-bg" aria-hidden="true">
+      <img
+        src="/images/exterior/1000472082.JPG"
+        alt="Exterior de La Casa de Kuki en Purmamarca"
+        class="nosotros-hero-img"
+        fetchpriority="high"
+      />
+      <div class="nosotros-hero-overlay"></div>
+    </div>
+    <div class="section-wrapper nosotros-hero-content">
+      <a href="/" class="nosotros-back" aria-label="Volver a la página principal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        Volver
+      </a>
+      <p class="nosotros-eyebrow">Conocé nuestra historia</p>
+      <h1 class="nosotros-title">La esencia de<br /><em>sentirte en casa</em></h1>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main id="main-content" class="nosotros-main">
+    <div class="section-wrapper nosotros-content">
+
+      <!-- Historia -->
+      <article class="nosotros-story">
+        <div class="story-text">
+          <p>
+            La Casa de Kuki nació con la idea de abrir las puertas de nuestro hogar en Purmamarca para que viajeros de todas partes encuentren un lugar donde bajar el ritmo. El nombre rinde honor a nuestra perra y anfitriona estrella, símbolo de alegría y compañía en este rincón de la Quebrada.
+          </p>
+          <p>
+            Acá no sos un número de habitación: te recibimos con trato familiar, sencillez norteña y ese silencio especial del paisaje que te resetea la energía. Queremos que después de caminar las calles de tierra y recorrer los cerros, sientas el alivio y la comodidad de llegar a tu propia casa.
+          </p>
+          <p>
+            Purmamarca es uno de esos lugares que transforman. El Cerro de los Siete Colores, el mercado artesanal, la quietud del atardecer… Nosotros somos el punto de partida y regreso de todo eso.
+          </p>
+        </div>
+
+        <!-- Stats visuales -->
+        <div class="nosotros-stats">
+          <div class="stat-item">
+            <span class="stat-num">2</span>
+            <span class="stat-label">Departamentos</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-num">10</span>
+            <span class="stat-label">Huéspedes máx.</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-num">🐾</span>
+            <span class="stat-label">Pet Friendly</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Departamentos -->
+      <section class="nosotros-deptos" aria-labelledby="deptos-heading">
+        <h2 id="deptos-heading" class="nosotros-section-title">Nuestros espacios</h2>
+
+        <div class="depto-detail">
+          <div class="depto-detail-img-wrap">
+            <img
+              src="/images/inti/IMG_3150.PNG"
+              alt="Interior del Departamento Inti"
+              class="depto-detail-img"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="depto-detail-body">
+            <div class="depto-detail-header">
+              <span aria-hidden="true">☀️</span>
+              <h3>Departamento Inti</h3>
+              <span class="depto-badge">Hasta 6 personas</span>
+            </div>
+            <p>Espacioso y completamente equipado para familias o grupos. Diseñado para que llegués y te sientas en casa.</p>
+            <ul class="depto-detail-features">
+              <li>🛏 1 cama matrimonial + 2 camas cuchetas (1½ plaza)</li>
+              <li>🍽 Heladera, microondas, vajilla completa</li>
+              <li>📺 TV con Chromecast + Wi-Fi</li>
+              <li>🚿 Baño privado con agua caliente + toallas y amenities</li>
+              <li>☕ Pava eléctrica y kit de infusiones regionales</li>
+              <li>🔥 Acceso libre al quincho compartido</li>
+              <li>🚗 Estacionamiento privado incluido</li>
+            </ul>
+            <a href="/departamentos/inti" class="btn-ghost">Ver galería completa →</a>
+          </div>
+        </div>
+
+        <div class="depto-detail depto-detail--reverse">
+          <div class="depto-detail-img-wrap">
+            <img
+              src="/images/killa/IMG_3160.PNG"
+              alt="Interior del Departamento Killa"
+              class="depto-detail-img"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="depto-detail-body">
+            <div class="depto-detail-header">
+              <span aria-hidden="true">🌙</span>
+              <h3>Departamento Killa</h3>
+              <span class="depto-badge">Hasta 4 personas</span>
+            </div>
+            <p>Cálido y funcional, ideal para familias pequeñas o parejas que quieren desconectar en el norte.</p>
+            <ul class="depto-detail-features">
+              <li>🛏 1 cama matrimonial + 1 cama cucheta</li>
+              <li>☕ Pava eléctrica y kit de infusiones regionales</li>
+              <li>📶 Wi-Fi incluido</li>
+              <li>🚿 Baño privado con agua caliente + toallas y amenities</li>
+              <li>🔥 Acceso libre al quincho compartido</li>
+              <li>🚗 Estacionamiento privado incluido</li>
+            </ul>
+            <a href="/departamentos/killa" class="btn-ghost">Ver galería completa →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA final -->
+      <div class="nosotros-cta-wrap">
+        <h2 class="nosotros-cta-title">¿Listo para escaparte a la Quebrada?</h2>
+        <p class="nosotros-cta-sub">Consultá disponibilidad directamente por WhatsApp y te respondemos a la brevedad.</p>
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="btn-primary nosotros-cta-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
+          </svg>
+          Consultar disponibilidad
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Hero de la página */
+  .nosotros-hero {
+    position: relative;
+    min-height: 55vh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 4rem;
+    overflow: hidden;
+  }
+
+  .nosotros-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .nosotros-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+
+  .nosotros-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(37, 26, 18, 0.85) 0%,
+      rgba(37, 26, 18, 0.4) 60%,
+      transparent 100%
+    );
+  }
+
+  .nosotros-hero-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 8rem;
+  }
+
+  .nosotros-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: rgba(255,255,255,0.75);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+
+  .nosotros-back:hover { color: white; }
+
+  .nosotros-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: var(--color-arena);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .nosotros-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    margin: 0;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+
+  .nosotros-title em {
+    font-style: italic;
+    color: var(--color-arena);
+    display: block;
+  }
+
+  /* Contenido principal */
+  .nosotros-main {
+    background-color: var(--color-blanco-calido);
+    padding: 5rem 0 6rem;
+  }
+
+  .nosotros-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  /* Historia */
+  .story-text p {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    color: var(--color-carbon-light);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+    max-width: 720px;
+  }
+
+  .nosotros-stats {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding: 2rem 2.5rem;
+    background: var(--color-arena-light);
+    border-radius: 1.25rem;
+    border: 1px solid var(--color-arena);
+    width: fit-content;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.375rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: var(--color-terracota);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-carbon-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--color-arena);
+  }
+
+  /* Sección deptos */
+  .nosotros-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: var(--color-marron-dark);
+    margin-bottom: 2.5rem;
+  }
+
+  .depto-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  .depto-detail:last-child { margin-bottom: 0; }
+
+  .depto-detail--reverse .depto-detail-img-wrap {
+    order: 2;
+  }
+  .depto-detail--reverse .depto-detail-body {
+    order: 1;
+  }
+
+  .depto-detail-img-wrap {
+    border-radius: 1.25rem;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    box-shadow: 0 12px 40px rgba(37, 26, 18, 0.15);
+  }
+
+  .depto-detail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .depto-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.875rem;
+    flex-wrap: wrap;
+  }
+
+  .depto-detail-header span:first-child {
+    font-size: 1.5rem;
+  }
+
+  .depto-detail-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-marron-dark);
+    margin: 0;
+  }
+
+  .depto-badge {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-terracota);
+    background: rgba(184, 84, 48, 0.1);
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+  }
+
+  .depto-detail-body > p {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-carbon-light);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .depto-detail-features {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .depto-detail-features li {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-carbon-light);
+    line-height: 1.5;
+  }
+
+  /* CTA final */
+  .nosotros-cta-wrap {
+    text-align: center;
+    background: var(--color-marron-dark);
+    border-radius: 1.5rem;
+    padding: 3.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .nosotros-cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 800;
+    color: white;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .nosotros-cta-sub {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 500px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .nosotros-cta-btn {
+    font-size: 1rem;
+    padding: 1rem 2.25rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .depto-detail,
+    .depto-detail--reverse {
+      grid-template-columns: 1fr;
+    }
+    .depto-detail--reverse .depto-detail-img-wrap,
+    .depto-detail--reverse .depto-detail-body {
+      order: unset;
+    }
+    .nosotros-stats {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nosotros-main { padding: 3rem 0 4rem; }
+    .nosotros-content { gap: 3rem; }
+    .nosotros-stats {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .stat-divider {
+      width: 40px;
+      height: 1px;
+    }
+    .nosotros-cta-wrap { padding: 2.5rem 1.25rem; }
+  }
+</style>

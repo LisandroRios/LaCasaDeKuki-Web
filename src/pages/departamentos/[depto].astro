@@ -1,0 +1,677 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { depto: 'inti' } },
+    { params: { depto: 'killa' } },
+    { params: { depto: 'espacios' } },
+  ];
+}
+
+const { depto } = Astro.params;
+
+const whatsappNumber = '5493884616542';
+
+type DeptoId = 'inti' | 'killa' | 'espacios';
+
+const data: Record<DeptoId, {
+  title: string;
+  description: string;
+  emoji: string;
+  tagline: string;
+  capacity: string;
+  features: string[];
+  images: { src: string; alt: string }[];
+  waMessage: string;
+  color: string;
+}> = {
+  inti: {
+    title: 'Departamento Inti ☀️ — La Casa de Kuki · Purmamarca',
+    description: 'Departamento Inti: espacioso y equipado para hasta 6 personas. Cama matrimonial + 2 cuchetas, TV con Chromecast, heladera, baño privado y acceso al quincho. Purmamarca, Jujuy.',
+    emoji: '☀️',
+    tagline: 'Espacioso y equipado para familias o grupos',
+    capacity: 'Hasta 6 personas',
+    color: '#B85430',
+    features: [
+      '🛏 1 cama matrimonial + 2 camas cuchetas (1½ plaza)',
+      '🍽 Mesa, sillas, heladera, microondas y vajilla completa',
+      '📺 TV con Chromecast + Wi-Fi estable',
+      '🚿 Baño privado con agua caliente, toallas y amenities',
+      '☕ Pava eléctrica y kit de infusiones regionales',
+      '🔥 Acceso libre al quincho compartido con parrilla',
+      '🚗 Estacionamiento privado y seguro incluido',
+      '🕐 Check-in 14:00 hs / Check-out 12:00 hs',
+    ],
+    images: [
+      { src: '/images/inti/IMG_3150.PNG', alt: 'Depto Inti — ambiente principal cálido y confortable' },
+      { src: '/images/inti/IMG_3151.PNG', alt: 'Depto Inti — dormitorio con ropa de cama de calidad' },
+      { src: '/images/inti/IMG_3152.PNG', alt: 'Depto Inti — baño privado con agua caliente' },
+      { src: '/images/inti/IMG_3153.PNG', alt: 'Depto Inti — espacio interior luminoso' },
+      { src: '/images/inti/IMG_3154.PNG', alt: 'Depto Inti — detalles del ambiente' },
+      { src: '/images/inti/IMG_3155.PNG', alt: 'Depto Inti — kit de infusiones y pava eléctrica' },
+      { src: '/images/inti/IMG_3156.PNG', alt: 'Depto Inti — vista del living' },
+      { src: '/images/inti/IMG_3157.PNG', alt: 'Depto Inti — rincón de descanso' },
+      { src: '/images/inti/IMG_3158.PNG', alt: 'Depto Inti — ambiente equipado' },
+      { src: '/images/inti/IMG_3159.PNG', alt: 'Depto Inti — detalle final del espacio' },
+    ],
+    waMessage: '¡Hola! Vi la web de La Casa de Kuki. Me interesa el Departamento Inti y quiero consultar disponibilidad. ¿Podría indicarme fechas y precio?',
+  },
+  killa: {
+    title: 'Departamento Killa 🌙 — La Casa de Kuki · Purmamarca',
+    description: 'Departamento Killa: cálido y acogedor para hasta 4 personas. Cama matrimonial + cucheta, Wi-Fi, baño privado y acceso al quincho. Purmamarca, Jujuy.',
+    emoji: '🌙',
+    tagline: 'Íntimo y acogedor para parejas o familias pequeñas',
+    capacity: 'Hasta 4 personas',
+    color: '#5C3520',
+    features: [
+      '🛏 1 cama matrimonial + 1 cama cucheta',
+      '☕ Pava eléctrica y kit de infusiones regionales',
+      '📶 Wi-Fi estable incluido',
+      '🚿 Baño privado con agua caliente, toallas y amenities',
+      '🔥 Acceso libre al quincho compartido con parrilla',
+      '🚗 Estacionamiento privado y seguro incluido',
+      '🕐 Check-in 14:00 hs / Check-out 12:00 hs',
+    ],
+    images: [
+      { src: '/images/killa/IMG_3160.PNG', alt: 'Depto Killa — ambiente principal cálido y confortable' },
+      { src: '/images/killa/IMG_3161.PNG', alt: 'Depto Killa — dormitorio con ropa de cama de calidad' },
+      { src: '/images/killa/IMG_3162.PNG', alt: 'Depto Killa — baño privado con agua caliente' },
+      { src: '/images/killa/IMG_3163.PNG', alt: 'Depto Killa — espacio interior luminoso' },
+      { src: '/images/killa/IMG_3164.PNG', alt: 'Depto Killa — detalles del ambiente' },
+      { src: '/images/killa/IMG_3165.PNG', alt: 'Depto Killa — kit de infusiones y comodidades' },
+      { src: '/images/killa/IMG_3166.PNG', alt: 'Depto Killa — rincón de descanso' },
+      { src: '/images/killa/1000287697.JPG', alt: 'Depto Killa — vista general del departamento' },
+    ],
+    waMessage: '¡Hola! Vi la web de La Casa de Kuki. Me interesa el Departamento Killa y quiero consultar disponibilidad. ¿Podría indicarme fechas y precio?',
+  },
+  espacios: {
+    title: 'Espacios Comunes — La Casa de Kuki · Purmamarca',
+    description: 'Quincho con parrilla, cocina completa, estacionamiento privado y vistas al Cerro de los Siete Colores. Espacios compartidos de La Casa de Kuki en Purmamarca, Jujuy.',
+    emoji: '🔥',
+    tagline: 'Quincho, estacionamiento y vistas privilegiadas',
+    capacity: 'Para todos los huéspedes',
+    color: '#8A3A1E',
+    features: [
+      '🔥 Quincho con parrilla para asados norteños',
+      '🍳 Cocina completa con vajilla lista para usar',
+      '🚗 Estacionamiento privado y seguro dentro del predio',
+      '⛰ Vista privilegiada al Cerro de los Siete Colores',
+      '🐾 Espacio pet friendly para tus mascotas',
+      '✅ Acceso libre para todos los huéspedes',
+    ],
+    images: [
+      { src: '/images/exterior/1000472082.JPG', alt: 'Frente de La Casa de Kuki — exterior y acceso' },
+      { src: '/images/exterior/1000367568.JPG', alt: 'Jardín y estacionamiento privado dentro del predio' },
+    ],
+    waMessage: '¡Hola! Vi la web de La Casa de Kuki. Quiero consultar disponibilidad. ¿Podría indicarme más información?',
+  },
+};
+
+const deptoData = data[depto as DeptoId];
+if (!deptoData) {
+  return Astro.redirect('/');
+}
+
+const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(deptoData.waMessage)}`;
+const heroImage = deptoData.images[0];
+---
+
+<Layout title={deptoData.title} description={deptoData.description}>
+  <!-- Hero del departamento -->
+  <header class="dpage-hero">
+    <div class="dpage-hero-bg" aria-hidden="true">
+      <img
+        src={heroImage.src}
+        alt={heroImage.alt}
+        class="dpage-hero-img"
+        fetchpriority="high"
+      />
+      <div class="dpage-hero-overlay"></div>
+    </div>
+    <div class="section-wrapper dpage-hero-content">
+      <a href="/" class="dpage-back">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        Inicio
+      </a>
+      <div class="dpage-hero-badge">
+        <span aria-hidden="true">{deptoData.emoji}</span>
+        <span>{deptoData.capacity}</span>
+      </div>
+      <h1 class="dpage-title">
+        {depto === 'inti' ? 'Depto Inti' : depto === 'killa' ? 'Depto Killa' : 'Espacios Comunes'}
+      </h1>
+      <p class="dpage-tagline">{deptoData.tagline}</p>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="section-wrapper dpage-main">
+
+      <!-- Features + CTA -->
+      <div class="dpage-info">
+        <div class="dpage-features-wrap">
+          <h2 class="dpage-features-title">Incluye</h2>
+          <ul class="dpage-features" aria-label={`Características incluidas en ${depto}`}>
+            {deptoData.features.map(f => <li>{f}</li>)}
+          </ul>
+        </div>
+        <div class="dpage-cta-wrap">
+          <p class="dpage-cta-label">¿Te interesa este espacio?</p>
+          <a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn-primary dpage-cta">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
+            </svg>
+            Consultar disponibilidad
+          </a>
+          <a href="/#contacto" class="btn-ghost dpage-cta-form">
+            Ver formulario de fechas
+          </a>
+        </div>
+      </div>
+
+      <!-- Galería completa -->
+      <section class="dpage-gallery" aria-labelledby="gallery-heading">
+        <h2 id="gallery-heading" class="dpage-gallery-title">
+          Galería de fotos
+          <span class="dpage-photo-count">({deptoData.images.length} fotos)</span>
+        </h2>
+        <div class="dpage-grid" id="dpage-grid" role="list">
+          {deptoData.images.map((img, i) => (
+            <button
+              class={`dpage-item ${i === 0 ? 'dpage-item--wide' : ''}`}
+              role="listitem"
+              aria-label={`Ver foto: ${img.alt}`}
+              data-src={img.src}
+              data-alt={img.alt}
+              data-index={i}
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading={i < 3 ? 'eager' : 'lazy'}
+                decoding="async"
+                class="dpage-img"
+              />
+              <div class="dpage-item-overlay" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+              </div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galería de fotos" hidden>
+    <div class="lightbox-backdrop" id="lb-backdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lb-close" aria-label="Cerrar">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+      <img id="lb-img" src="" alt="" class="lightbox-img" />
+      <p id="lb-caption" class="lightbox-caption"></p>
+      <div class="lightbox-footer">
+        <span id="lb-counter" class="lightbox-counter"></span>
+        <div class="lightbox-nav">
+          <button id="lb-prev" class="lightbox-nav-btn" aria-label="Anterior">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          </button>
+          <button id="lb-next" class="lightbox-nav-btn" aria-label="Siguiente">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Lightbox
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.dpage-item');
+  const lb = document.getElementById('lightbox') as HTMLElement;
+  const lbImg = document.getElementById('lb-img') as HTMLImageElement;
+  const lbCaption = document.getElementById('lb-caption');
+  const lbCounter = document.getElementById('lb-counter');
+  const lbClose = document.getElementById('lb-close');
+  const lbBackdrop = document.getElementById('lb-backdrop');
+  const lbPrev = document.getElementById('lb-prev');
+  const lbNext = document.getElementById('lb-next');
+  let current = 0;
+
+  const items = Array.from(buttons).map(b => ({ src: b.dataset.src!, alt: b.dataset.alt! }));
+
+  function open(i: number) {
+    current = i;
+    if (!lb || !lbImg || !lbCaption) return;
+    lbImg.src = items[i].src;
+    lbImg.alt = items[i].alt;
+    lbCaption.textContent = items[i].alt;
+    if (lbCounter) lbCounter.textContent = `${i + 1} / ${items.length}`;
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lb.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function nav(d: number) {
+    current = (current + d + items.length) % items.length;
+    if (!lbImg || !lbCaption) return;
+    lbImg.src = items[current].src;
+    lbImg.alt = items[current].alt;
+    lbCaption.textContent = items[current].alt;
+    if (lbCounter) lbCounter.textContent = `${current + 1} / ${items.length}`;
+  }
+
+  buttons.forEach((btn, i) => btn.addEventListener('click', () => open(i)));
+  lbClose?.addEventListener('click', close);
+  lbBackdrop?.addEventListener('click', close);
+  lbPrev?.addEventListener('click', () => nav(-1));
+  lbNext?.addEventListener('click', () => nav(1));
+  document.addEventListener('keydown', e => {
+    if (lb?.hidden) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') nav(-1);
+    if (e.key === 'ArrowRight') nav(1);
+  });
+
+  // Animación de entrada de la grilla
+  const gridItems = document.querySelectorAll('.dpage-item');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).style.opacity = '1';
+        (entry.target as HTMLElement).style.transform = 'translateY(0)';
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+
+  gridItems.forEach((item, i) => {
+    const el = item as HTMLElement;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = `opacity 0.5s ease ${i * 0.06}s, transform 0.5s ease ${i * 0.06}s`;
+    obs.observe(el);
+  });
+</script>
+
+<style>
+  /* Hero */
+  .dpage-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 4rem;
+    overflow: hidden;
+  }
+
+  .dpage-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .dpage-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+
+  .dpage-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(37, 26, 18, 0.88) 0%,
+      rgba(37, 26, 18, 0.45) 55%,
+      transparent 100%
+    );
+  }
+
+  .dpage-hero-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 8rem;
+  }
+
+  .dpage-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: rgba(255,255,255,0.7);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+  .dpage-back:hover { color: white; }
+
+  .dpage-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding: 0.375rem 1rem;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .dpage-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 900;
+    color: white;
+    line-height: 1.05;
+    margin: 0 0 0.625rem;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+
+  .dpage-tagline {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.85);
+    margin: 0;
+  }
+
+  /* Main content */
+  .dpage-main {
+    padding: 4rem 0 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  /* Info: features + CTA */
+  .dpage-info {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: start;
+    background: var(--color-arena-light);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    border: 1px solid var(--color-arena);
+  }
+
+  .dpage-features-title {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 800;
+    color: var(--color-marron-dark);
+    margin-bottom: 1.25rem;
+  }
+
+  .dpage-features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .dpage-features li {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-carbon-light);
+    line-height: 1.5;
+  }
+
+  .dpage-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.875rem;
+    min-width: 220px;
+  }
+
+  .dpage-cta-label {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-carbon-light);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0;
+    text-align: center;
+  }
+
+  .dpage-cta {
+    justify-content: center;
+    gap: 0.625rem;
+    width: 100%;
+  }
+
+  .dpage-cta-form {
+    justify-content: center;
+    width: 100%;
+    font-size: 0.875rem;
+    padding: 0.625rem 1.25rem;
+  }
+
+  /* Galería */
+  .dpage-gallery-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-marron-dark);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .dpage-photo-count {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-carbon-light);
+  }
+
+  .dpage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.875rem;
+  }
+
+  .dpage-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: var(--color-arena-light);
+  }
+
+  .dpage-item--wide {
+    grid-column: span 2;
+  }
+
+  .dpage-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+
+  .dpage-item:hover .dpage-img { transform: scale(1.06); }
+
+  .dpage-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(37, 26, 18, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: background 0.3s ease;
+  }
+
+  .dpage-item:hover .dpage-item-overlay {
+    background: rgba(37, 26, 18, 0.45);
+  }
+
+  .dpage-item-overlay svg { opacity: 0; transition: opacity 0.3s; }
+  .dpage-item:hover .dpage-item-overlay svg { opacity: 1; }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox[hidden] { display: none; }
+
+  .lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 12, 6, 0.96);
+    backdrop-filter: blur(8px);
+  }
+
+  .lightbox-content {
+    position: relative;
+    z-index: 1;
+    max-width: 92vw;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 74vh;
+    object-fit: contain;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+
+  .lightbox-caption {
+    color: rgba(255,255,255,0.7);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    text-align: center;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: -3.5rem;
+    right: 0;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.3); }
+
+  .lightbox-footer {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .lightbox-counter {
+    color: rgba(255,255,255,0.5);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    letter-spacing: 0.05em;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .lightbox-nav {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .lightbox-nav-btn {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .lightbox-nav-btn:hover { background: rgba(255,255,255,0.3); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .dpage-info {
+      grid-template-columns: 1fr;
+    }
+    .dpage-cta-wrap {
+      min-width: unset;
+    }
+    .dpage-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .dpage-item--wide {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .dpage-grid {
+      grid-template-columns: 1fr;
+    }
+    .dpage-item--wide {
+      grid-column: span 1;
+    }
+    .dpage-info {
+      padding: 1.5rem 1.25rem;
+    }
+    .dpage-main {
+      padding: 3rem 0 4rem;
+    }
+  }
+</style>

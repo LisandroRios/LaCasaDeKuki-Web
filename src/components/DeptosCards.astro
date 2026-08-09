@@ -1,0 +1,317 @@
+---
+// DeptosCards — La Casa de Kuki
+// Cards de presentación de departamentos en la Home → rutas dedicadas
+
+const deptos = [
+  {
+    id: 'inti',
+    emoji: '☀️',
+    name: 'Depto Inti',
+    tagline: 'Espacioso para familias o grupos',
+    capacity: 'Hasta 6 personas',
+    highlights: ['1 matrimonial + 2 cuchetas', 'TV · Chromecast · Wi-Fi', 'Baño privado + amenities', 'Heladera y microondas'],
+    image: '/images/inti/IMG_3150.PNG',
+    href: '/departamentos/inti',
+    color: 'var(--color-terracota)',
+  },
+  {
+    id: 'killa',
+    emoji: '🌙',
+    name: 'Depto Killa',
+    tagline: 'Íntimo para parejas o familias pequeñas',
+    capacity: 'Hasta 4 personas',
+    highlights: ['1 matrimonial + 1 cucheta', 'Wi-Fi incluido', 'Baño privado + amenities', 'Kit de infusiones'],
+    image: '/images/killa/IMG_3160.PNG',
+    href: '/departamentos/killa',
+    color: 'var(--color-marron)',
+  },
+  {
+    id: 'espacios',
+    emoji: '🔥',
+    name: 'Espacios Comunes',
+    tagline: 'Quincho, estacionamiento y vistas',
+    capacity: 'Para todos los huéspedes',
+    highlights: ['Quincho con parrilla', 'Cocina completa', 'Estacionamiento privado', 'Vistas a los cerros'],
+    image: '/images/exterior/1000472082.JPG',
+    href: '/departamentos/espacios',
+    color: 'var(--color-terracota-dark)',
+  },
+];
+---
+
+<section id="departamentos" class="deptos-section">
+  <div class="section-wrapper">
+    <div class="deptos-header">
+      <p class="deptos-eyebrow">Elegí tu espacio</p>
+      <h2 class="section-title">Nuestros<br /><em>departamentos</em></h2>
+      <div class="section-divider"><span>✦</span></div>
+      <p class="section-subtitle">
+        Dos departamentos cómodos y cálidos, más espacios compartidos pensados para que llegués y te sientas en casa.
+      </p>
+    </div>
+
+    <div class="deptos-grid" role="list">
+      {deptos.map((d) => (
+        <article class="depto-card" role="listitem" id={`depto-${d.id}`}>
+          <!-- Imagen con overlay -->
+          <div class="depto-img-wrap">
+            <img
+              src={d.image}
+              alt={`${d.name} — ${d.tagline}`}
+              class="depto-img"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="depto-img-overlay" aria-hidden="true"></div>
+            <span class="depto-emoji" aria-hidden="true">{d.emoji}</span>
+          </div>
+
+          <!-- Contenido -->
+          <div class="depto-content">
+            <div class="depto-top">
+              <h3 class="depto-name">{d.name}</h3>
+              <span class="depto-capacity">{d.capacity}</span>
+            </div>
+            <p class="depto-tagline">{d.tagline}</p>
+
+            <!-- Highlights -->
+            <ul class="depto-highlights" aria-label={`Características de ${d.name}`}>
+              {d.highlights.map(h => (
+                <li>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  </svg>
+                  {h}
+                </li>
+              ))}
+            </ul>
+
+            <a href={d.href} class="depto-cta" aria-label={`Ver galería completa de ${d.name}`}>
+              Ver galería completa
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .deptos-section {
+    padding: 5rem 0 6rem;
+    background-color: var(--color-blanco-calido);
+  }
+
+  .deptos-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .deptos-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: var(--color-terracota);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--color-terracota);
+    display: block;
+  }
+
+  /* Grid */
+  .deptos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Card */
+  .depto-card {
+    background: white;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 1px solid var(--color-arena-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .depto-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(37, 26, 18, 0.14);
+  }
+
+  /* Imagen */
+  .depto-img-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .depto-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+  }
+
+  .depto-card:hover .depto-img {
+    transform: scale(1.06);
+  }
+
+  .depto-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(37, 26, 18, 0.5) 0%,
+      transparent 60%
+    );
+  }
+
+  .depto-emoji {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.75rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+    line-height: 1;
+  }
+
+  /* Contenido */
+  .depto-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    flex: 1;
+  }
+
+  .depto-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .depto-name {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 800;
+    color: var(--color-marron-dark);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .depto-capacity {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-terracota);
+    background: rgba(184, 84, 48, 0.1);
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+
+  .depto-tagline {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-carbon-light);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .depto-highlights {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+  }
+
+  .depto-highlights li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: var(--color-carbon-light);
+    line-height: 1.4;
+  }
+
+  .depto-highlights li svg {
+    color: var(--color-terracota);
+    flex-shrink: 0;
+  }
+
+  .depto-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1.25rem;
+    background-color: var(--color-terracota);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    margin-top: auto;
+    letter-spacing: 0.02em;
+  }
+
+  .depto-cta:hover {
+    background-color: var(--color-terracota-dark);
+    transform: translateY(-1px);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .deptos-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    /* La tercera card (Espacios) ocupa el ancho completo en tablet */
+    .depto-card:last-child {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .depto-card:last-child .depto-img-wrap {
+      aspect-ratio: unset;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .deptos-grid {
+      grid-template-columns: 1fr;
+    }
+    .depto-card:last-child {
+      grid-column: span 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .depto-card:last-child .depto-img-wrap {
+      aspect-ratio: 4/3;
+    }
+    .deptos-section {
+      padding: 4rem 0 5rem;
+    }
+  }
+</style>

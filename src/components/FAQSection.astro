@@ -1,0 +1,230 @@
+---
+// FAQSection — La Casa de Kuki
+// Preguntas frecuentes como sección independiente, centrada y visual
+
+const faqs = [
+  {
+    id: 'faq-horarios',
+    question: '¿Cuáles son los horarios de ingreso y salida?',
+    answer: 'El check-in es a partir de las 14:00 hs (con guardado de equipaje previo si llegás antes) y el check-out es hasta las 12:00 hs. Este horario nos da el tiempo necesario para dejar cada departamento impecable y ventilado para los próximos huéspedes.',
+  },
+  {
+    id: 'faq-estacionamiento',
+    question: '¿Tienen estacionamiento propio?',
+    answer: 'Sí, el estacionamiento es privado, se encuentra dentro del mismo predio y está incluido en el valor de tu estadía.',
+  },
+  {
+    id: 'faq-mascotas',
+    question: '¿Aceptan mascotas?',
+    answer: '¡Por supuesto! Le hacemos honor a nuestro nombre: somos un alojamiento Pet Friendly y recibimos a tus mascotas con gusto. Solo te pedimos avisarnos al momento de reservar.',
+  },
+  {
+    id: 'faq-pagos',
+    question: '¿Qué medios de pago aceptan?',
+    answer: 'Aceptamos efectivo, transferencias bancarias y tarjetas de crédito. Tené en cuenta que los pagos con tarjeta de crédito tienen un recargo del 15% por costos financieros de la plataforma.',
+  },
+  {
+    id: 'faq-quincho',
+    question: '¿Cómo funciona el uso del quincho compartido?',
+    answer: 'El quincho es de uso libre para todos nuestros huéspedes. Tiene parrilla, vajilla y cocina completa; únicamente pedimos dejar limpio y ordenado lo que se utilice para mantener la buena convivencia.',
+  },
+  {
+    id: 'faq-reserva',
+    question: '¿Cómo se confirma la reserva y cuál es la política de cancelación?',
+    answer: 'Para asegurar tu fecha pedimos una seña del 20% del total mediante transferencia. Si te surge un imprevisto, podés cancelar sin costo y con reintegro de la seña hasta 15 días antes de la fecha de check-in.',
+  },
+];
+---
+
+<section id="faq" class="faq-section">
+  <!-- Franja decorativa superior -->
+  <div class="faq-strip" aria-hidden="true"></div>
+
+  <div class="section-wrapper faq-wrapper">
+    <div class="faq-header">
+      <p class="faq-eyebrow">Antes de reservar</p>
+      <h2 class="section-title">Preguntas<br /><em>frecuentes</em></h2>
+      <div class="section-divider"><span>✦</span></div>
+      <p class="section-subtitle">
+        Todo lo que necesitás saber para planificar tu estadía en La Casa de Kuki sin sorpresas.
+      </p>
+    </div>
+
+    <div class="faq-list" role="list">
+      {faqs.map((faq) => (
+        <details class="faq-item" id={faq.id} role="listitem">
+          <summary class="faq-question">
+            <span>{faq.question}</span>
+            <span class="faq-chevron" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- CTA al formulario de contacto -->
+    <div class="faq-cta-wrap">
+      <p class="faq-cta-text">¿Tenés otra pregunta? Escribinos directamente.</p>
+      <a href="#contacto" class="btn-primary faq-cta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
+        </svg>
+        Consultar por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    background-color: var(--color-arena-light);
+    padding-bottom: 6rem;
+    position: relative;
+  }
+
+  .faq-strip {
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      var(--color-terracota-xdark),
+      var(--color-terracota),
+      var(--color-arena-dark),
+      var(--color-terracota),
+      var(--color-terracota-xdark)
+    );
+  }
+
+  .faq-wrapper {
+    padding-top: 5rem;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .faq-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: var(--color-terracota);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--color-terracota);
+    display: block;
+  }
+
+  /* FAQ list: columna centrada */
+  .faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    background: white;
+    border: 1.5px solid var(--color-arena);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .faq-item[open] {
+    border-color: var(--color-terracota-light);
+    box-shadow: 0 4px 20px rgba(184, 84, 48, 0.1);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-carbon);
+    list-style: none;
+    user-select: none;
+    transition: color 0.2s ease;
+  }
+
+  .faq-question::-webkit-details-marker { display: none; }
+
+  .faq-item[open] .faq-question {
+    color: var(--color-terracota);
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    color: var(--color-terracota);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.25rem;
+    border-top: 1px solid var(--color-arena);
+  }
+
+  .faq-answer p {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-carbon-light);
+    line-height: 1.8;
+    margin: 1rem 0 0;
+  }
+
+  /* CTA al final */
+  .faq-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .faq-cta-text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-carbon-light);
+    margin: 0;
+  }
+
+  .faq-cta-btn {
+    font-size: 0.9375rem;
+    padding: 0.875rem 2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .faq-question {
+      padding: 1rem 1.25rem;
+      font-size: 0.9375rem;
+    }
+    .faq-answer {
+      padding: 0 1.25rem 1rem;
+    }
+  }
+</style>
