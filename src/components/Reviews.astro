@@ -5,48 +5,39 @@
 const reviews = [
   {
     id: 'review-1',
-    name: 'María G.',
+    name: 'Camila',
     origin: 'Buenos Aires',
     rating: 5,
-    date: 'Enero 2025',
-    text: 'Una experiencia increíble. El lugar es exactamente como lo muestran las fotos, muy limpio y acogedor. Kuki fue una anfitriona excelente, nos dio todos los tips para recorrer la quebrada. El desayuno riquísimo. ¡Volvería sin dudarlo!',
-    avatar: 'M',
+    date: 'En Google Maps',
+    text: 'Excelente lugar. Todos los puntos turísticos a pocos metros, con vista al cerro. Un hospedaje económico, tranquilo y cómodo. Cuenta con WiFi, agua caliente y tiene una pava eléctrica con unas infusiones. Volvería a hospedarme en el lugar.',
+    avatar: 'C',
     avatarColor: '#C1603A',
   },
   {
     id: 'review-2',
-    name: 'Lucas P.',
-    origin: 'Córdoba',
+    name: 'Sol',
+    origin: 'Buenos Aires',
     rating: 5,
-    date: 'Marzo 2025',
-    text: 'Llegamos en familia con tres chicos y fue perfecto. El estacionamiento privado es muy útil porque viajamos en auto. La ubicación es imbatible, a pasos de todo. Habitaciones amplias y cómodas. Muy recomendable.',
-    avatar: 'L',
+    date: 'En Google Maps',
+    text: 'Súper conformes, la habitación incluye baño, toallas, shampoo y acondicionador, pava eléctrica, heladera, tacitas y vasos para tomar algo. Tiene una cocina compartida con vajilla, horno de barro y parrilla. Lisandro siempre estuvo predispuesto a ayudarnos. Ubicación ideal y tranquila.',
+    avatar: 'S',
     avatarColor: '#7A4B2E',
   },
   {
     id: 'review-3',
-    name: 'Sofía V.',
-    origin: 'Rosario',
+    name: 'Macarena',
+    origin: 'Buenos Aires',
     rating: 5,
-    date: 'Julio 2025',
-    text: 'El rincón más lindo que encontramos en todo el noroeste. La vista desde el quincho es espectacular. La atención es muy personalizada y cálida. Se nota que hay mucho amor puesto en cada detalle del lugar.',
-    avatar: 'S',
+    date: 'En Google Maps',
+    text: 'Estuvimos dos noches, el lugar es suuuper tranquilo, la habitación genial, amplia y cómoda, además de que estaba impecable! La ubicación espectacular a 3 cuadras del corazón de Purmamarca. Cuenta con un quincho compartido con parrilla y cocina totalmente equipado.',
+    avatar: 'M',
     avatarColor: '#9E4C2A',
-  },
-  {
-    id: 'review-4',
-    name: 'Roberto & Caro',
-    origin: 'Mendoza',
-    rating: 5,
-    date: 'Agosto 2025',
-    text: 'Fue nuestro hospedaje de luna de miel y superó todas las expectativas. El ambiente rústico y cálido, la atención impecable. Nos ayudaron a organizar todas las excursiones. Sin dudas el mejor lugar para hospedarse en Purmamarca.',
-    avatar: 'R',
-    avatarColor: '#5C3520',
   },
 ];
 
-const overallRating = 5.0;
-const totalReviews = 48;
+const overallRating = 4.7; // Puntuación real
+const totalReviews = 109; // Número real de reseñas
+const googleMapsUrl = "https://www.google.com.ar/maps/place/La+Casa+de+Kuki+Purmamarca/@-23.7484756,-65.4966371,17z/data=!4m9!3m8!1s0x941b49429382b9a1:0x940dd8cb5206f489!5m2!4m1!1i2!8m2!3d-23.7484756!4d-65.4966371!16s%2Fg%2F11tt5xrsqn?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D";
 ---
 
 <section id="resenas" class="reviews-section">
@@ -58,20 +49,22 @@ const totalReviews = 48;
       <div class="section-divider"><span>✦</span></div>
 
       <!-- Rating overview -->
-      <div class="reviews-overview" aria-label={`Puntuación promedio: ${overallRating} sobre 5, basado en ${totalReviews} reseñas`}>
-        <div class="overview-score">{overallRating.toFixed(1)}</div>
-        <div class="overview-details">
-          <div class="overview-stars" role="img" aria-label="5 estrellas">
-            {Array.from({ length: 5 }).map(() => (
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-              </svg>
-            ))}
+      <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer" style="text-decoration: none;">
+        <div class="reviews-overview" aria-label={`Puntuación promedio: ${overallRating} sobre 5, basado en ${totalReviews} reseñas`}>
+          <div class="overview-score">{overallRating.toFixed(1)}</div>
+          <div class="overview-details">
+            <div class="overview-stars" role="img" aria-label="5 estrellas">
+              {Array.from({ length: 5 }).map(() => (
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="overview-count">Basado en <strong>{totalReviews}</strong> reseñas</p>
+            <p class="overview-source">Ver en Google Maps</p>
           </div>
-          <p class="overview-count">Basado en <strong>{totalReviews}</strong> reseñas</p>
-          <p class="overview-source">Google Maps & Booking.com</p>
         </div>
-      </div>
+      </a>
     </div>
 
     <!-- Cards de reviews -->
@@ -124,7 +117,7 @@ const totalReviews = 48;
     <!-- CTA a Google Maps -->
     <div class="reviews-cta">
       <a
-        href="https://www.google.com.ar/maps/place/La+Casa+de+Kuki+Purmamarca/@-23.7484756,-65.4966371,17z"
+        href={googleMapsUrl}
         target="_blank"
         rel="noopener noreferrer"
         class="reviews-gmaps-btn"
@@ -245,7 +238,7 @@ const totalReviews = 48;
   /* Grid */
   .reviews-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-bottom: 3rem;
   }
@@ -380,8 +373,14 @@ const totalReviews = 48;
   .reviews-gmaps-btn svg { flex-shrink: 0; }
 
   /* Responsive */
+  @media (max-width: 1024px) {
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    .review-card:last-child { grid-column: span 2; }
+  }
+
   @media (max-width: 768px) {
     .reviews-grid { grid-template-columns: 1fr; }
+    .review-card:last-child { grid-column: span 1; }
     .reviews-overview { flex-direction: column; gap: 0.75rem; text-align: center; }
     .overview-details { text-align: center; }
     .overview-stars { justify-content: center; }
