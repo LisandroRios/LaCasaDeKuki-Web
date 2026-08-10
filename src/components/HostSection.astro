@@ -1,0 +1,217 @@
+---
+// HostSection — La Casa de Kuki
+// Bloque descontracturado: presentación de los dueños y Kuki (la anfitriona de 4 patas)
+---
+
+<section id="nosotros-bloque" class="host-section">
+  <div class="section-wrapper host-wrapper">
+
+    <!-- Línea decorativa norteña -->
+    <div class="host-accent" aria-hidden="true"></div>
+
+    <div class="host-content">
+      <p class="host-eyebrow">Quiénes somos</p>
+      <h2 class="host-title">Atendido por sus dueños</h2>
+      <p class="host-text">
+        No hay recepción ni formularios. Llegás, te abrimos la puerta y te contamos
+        lo mejor del lugar de primera mano — como corresponde en el norte.
+      </p>
+
+      <!-- Bloque Kuki -->
+      <div class="kuki-block">
+        <div class="kuki-paw" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 64 64" fill="currentColor" aria-label="pata">
+            <ellipse cx="12" cy="20" rx="7" ry="9"/>
+            <ellipse cx="52" cy="20" rx="7" ry="9"/>
+            <ellipse cx="24" cy="10" rx="7" ry="9"/>
+            <ellipse cx="40" cy="10" rx="7" ry="9"/>
+            <path d="M32 22c-10 0-18 8-15 20 2 8 8 14 15 14s13-6 15-14c3-12-5-20-15-20z"/>
+          </svg>
+        </div>
+        <p class="kuki-text">
+          Y por supuesto, también está <strong>Kuki</strong> — nuestra anfitriona de 4 patas,
+          la verdadera dueña de la casa.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tags visuales — rápidos y escaneables -->
+    <div class="host-tags" aria-label="Características del hospedaje">
+      <span class="host-tag">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+        </svg>
+        Wi-Fi incluido
+      </span>
+      <span class="host-tag">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/>
+        </svg>
+        Estacionamiento privado
+      </span>
+      <span class="host-tag">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M4.5 11c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm15-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 5C9 9 5 13 5 16c0 2.21 3.13 4 7 4s7-1.79 7-4c0-3-4-6-7-6z"/>
+        </svg>
+        Pet friendly
+      </span>
+      <span class="host-tag">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.2-1.1-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/>
+        </svg>
+        Quincho con parrilla
+      </span>
+      <span class="host-tag">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        Cerro de los 7 Colores
+      </span>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .host-section {
+    padding: 4rem 0;
+    background-color: var(--color-blanco-calido);
+    border-top: 1px solid var(--color-arena-light);
+  }
+
+  .host-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  /* Línea decorativa vertical — motivo norteño */
+  .host-accent {
+    flex-shrink: 0;
+    width: 4px;
+    height: 120px;
+    border-radius: 4px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-terracota-light),
+      var(--color-terracota),
+      var(--color-terracota-dark)
+    );
+  }
+
+  .host-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .host-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: var(--color-terracota);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .host-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-marron-dark);
+    line-height: 1.1;
+    margin-bottom: 0.875rem;
+  }
+
+  .host-text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-carbon-light);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Bloque Kuki */
+  .kuki-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background-color: rgba(222, 202, 154, 0.2);
+    border: 1px solid var(--color-arena);
+    border-radius: 0.875rem;
+    padding: 0.875rem 1.125rem;
+    max-width: 480px;
+  }
+
+  .kuki-paw {
+    color: var(--color-terracota);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .kuki-text {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-carbon-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .kuki-text strong {
+    color: var(--color-marron-dark);
+    font-weight: 700;
+  }
+
+  /* Tags */
+  .host-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    flex-shrink: 0;
+    max-width: 340px;
+  }
+
+  .host-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-carbon-light);
+    background-color: white;
+    border: 1px solid var(--color-arena);
+    padding: 0.4rem 0.875rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+    box-shadow: 0 1px 6px rgba(37, 26, 18, 0.05);
+  }
+
+  .host-tag svg {
+    color: var(--color-terracota);
+    flex-shrink: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .host-wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .host-accent {
+      width: 80px;
+      height: 4px;
+    }
+
+    .host-tags {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .host-section { padding: 3rem 0; }
+  }
+</style>

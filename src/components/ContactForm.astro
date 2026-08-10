@@ -163,7 +163,10 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
         </button>
 
         <p class="form-privacy">
-          🔒 Tus datos son usados únicamente para responder tu consulta. No spam.
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle;margin-right:0.3rem">
+            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+          </svg>
+          Tus datos son usados únicamente para responder tu consulta. No spam.
         </p>
       </form>
     </div>
@@ -268,11 +271,11 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
     const waMessage = [
       `¡Hola! Me comunico desde el sitio web de La Casa de Kuki.`,
       ``,
-      `📋 *Datos de consulta:*`,
-      `• Nombre: ${nombre}`,
-      `• Huéspedes: ${huespedes} persona(s)`,
-      `• Ingreso: ${formatDate(ingreso)}`,
-      `• Egreso: ${formatDate(egreso)} (${nights} noche${nights !== 1 ? 's' : ''})`,
+      `*Datos de consulta:*`,
+      `- Nombre: ${nombre}`,
+      `- Huéspedes: ${huespedes} persona(s)`,
+      `- Ingreso: ${formatDate(ingreso)}`,
+      `- Egreso: ${formatDate(egreso)} (${nights} noche${nights !== 1 ? 's' : ''})`,
       ``,
       `¿Tienen disponibilidad? ¡Gracias!`,
     ].join('\n');

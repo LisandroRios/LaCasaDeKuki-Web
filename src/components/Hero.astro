@@ -9,104 +9,67 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   <!-- Imagen de fondo -->
   <div class="hero-bg" aria-hidden="true">
     <img
-      src="/images/hero.png"
-      alt="Vista del hospedaje La Casa de Kuki con el Cerro de los Siete Colores en Purmamarca"
+      src="/images/exterior/1000472082.JPG"
+      alt=""
       class="hero-bg-img"
       fetchpriority="high"
       width="1920"
       height="1080"
+      role="presentation"
     />
     <div class="hero-overlay"></div>
   </div>
 
-  <!-- Contenido -->
-  <div class="section-wrapper hero-content">
-    <!-- Badge -->
+  <!-- Contenido centrado -->
+  <div class="hero-content">
+    <!-- Badge de ubicación -->
     <div class="hero-badge animate-fadeUp animate-delay-200">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
       </svg>
       Purmamarca, Jujuy · Argentina
     </div>
 
-    <!-- Título principal -->
+    <!-- H1 máximo 5 palabras -->
     <h1 class="hero-title animate-fadeUp animate-delay-400">
-      Tu casa en el corazón<br />
-      <em>de la Quebrada</em>
+      Tu hogar en<br /><em>la Quebrada</em>
     </h1>
 
-    <!-- Descripción -->
-    <p class="hero-description animate-fadeUp animate-delay-600">
-      Un lugar en Purmamarca donde los cerros se ven desde la cama y el mate sale solo.
-      Descansá y viví el norte a tu propio ritmo.
-    </p>
+    <!-- CTA único -->
+    <a
+      href="#contacto"
+      class="btn-primary hero-btn animate-fadeUp animate-delay-600"
+      id="hero-cta-reserva"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
+      </svg>
+      Consultar disponibilidad
+    </a>
+  </div>
 
-    <!-- Features destacados -->
-    <div class="hero-features animate-fadeUp animate-delay-600">
-      <div class="hero-feature">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
-        </svg>
-        <span>Wi-Fi gratis</span>
-      </div>
-      <div class="hero-feature">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
-        </svg>
-        <span>Estacionamiento privado</span>
-      </div>
-      <div class="hero-feature">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M4.5 11c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0-2zm15-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 2zm-7.5-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0-2zm0 5C9 9 5 13 5 16c0 2.21 3.13 4 7 4s7-1.79 7-4c0-3-4-6-7-6zm2 6.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm-4 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-        </svg>
-        <span>Pet Friendly 🐾</span>
-      </div>
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-indicator animate-fadeIn animate-delay-800" aria-hidden="true">
+    <div class="scroll-mouse">
+      <div class="scroll-wheel"></div>
     </div>
-
-    <!-- CTA buttons -->
-    <div class="hero-cta animate-fadeUp animate-delay-800">
-      <a
-        href="#contacto"
-        class="btn-primary hero-btn-main"
-        id="hero-cta-reserva"
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
-        </svg>
-        Consultar disponibilidad
-      </a>
-      <a
-        href="#departamentos"
-        class="btn-secondary"
-        id="hero-ver-deptos"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M3 5v14h8V5H3zm6 12H5V7h4v10zm8-14v6h8V3h-8zm6 4h-4V5h4v2zm-6 4v8h8v-8h-8zm6 6h-4v-4h4v4z"/>
-        </svg>
-        Ver departamentos
-      </a>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="hero-scroll-indicator animate-fadeIn animate-delay-800" aria-hidden="true">
-      <div class="scroll-mouse">
-        <div class="scroll-wheel"></div>
-      </div>
-      <span>Descubrí más</span>
-    </div>
+    <span>Descubrí más</span>
   </div>
 </section>
 
 <style>
   .hero {
     position: relative;
-    min-height: 88vh;
+    height: 100vh;
+    min-height: 600px;
     display: flex;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
   }
 
+  /* Fondo */
   .hero-bg {
     position: absolute;
     inset: 0;
@@ -117,64 +80,67 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%;
+    object-position: center 40%;
     transform: scale(1.05);
-    animation: heroZoom 12s ease-out forwards;
+    animation: heroZoom 14s ease-out forwards;
   }
 
   @keyframes heroZoom {
     from { transform: scale(1.05); }
-    to { transform: scale(1); }
+    to   { transform: scale(1); }
   }
 
+  /* Overlay con degradado rico — más oscuro abajo para que el scroll indicator se lea */
   .hero-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      160deg,
-      rgba(37, 26, 18, 0.82) 0%,
-      rgba(106, 58, 30, 0.58) 55%,
-      rgba(184, 84, 48, 0.28) 100%
+      170deg,
+      rgba(30, 18, 10, 0.72) 0%,
+      rgba(90, 45, 18, 0.52) 50%,
+      rgba(30, 18, 10, 0.78) 100%
     );
   }
 
+  /* Contenido */
   .hero-content {
     position: relative;
     z-index: 1;
-    padding-top: 7rem;
-    padding-bottom: 4rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    max-width: 760px;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.5rem;
+    max-width: 800px;
   }
 
   .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background-color: rgba(255,255,255,0.15);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.3);
-    color: white;
+    gap: 0.45rem;
+    background-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.92);
     font-family: var(--font-body);
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 600;
-    padding: 0.375rem 1rem;
+    padding: 0.35rem 1rem;
     border-radius: 9999px;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.04em;
+    margin-bottom: 1.75rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
   .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    font-weight: 700;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 800;
     color: white;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    line-height: 1.05;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 4px 32px rgba(0, 0, 0, 0.35);
+    letter-spacing: -0.02em;
   }
 
   .hero-title em {
@@ -183,73 +149,40 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
     display: block;
   }
 
-  .hero-description {
-    font-family: var(--font-body);
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    color: rgba(255,255,255,0.88);
-    max-width: 540px;
-    line-height: 1.7;
-    margin-bottom: 1.75rem;
-  }
-
-  .hero-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-feature {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(255,255,255,0.9);
-    font-family: var(--font-body);
-    font-size: 0.9375rem;
-    font-weight: 600;
-  }
-
-  .hero-feature svg {
-    color: var(--color-arena);
-    flex-shrink: 0;
-  }
-
-  .hero-cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 4rem;
-  }
-
-  .hero-btn-main {
+  .hero-btn {
     font-size: 1.0625rem;
-    padding: 1rem 2.25rem;
-    background-color: var(--color-terracota);
+    padding: 1.0625rem 2.5rem;
+    box-shadow: 0 6px 28px rgba(184, 84, 48, 0.5);
   }
 
-  /* Scroll indicator */
+  /* Scroll indicator — fijado al fondo de la sección */
   .hero-scroll-indicator {
+    position: absolute;
+    bottom: 2.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    color: rgba(255,255,255,0.6);
+    gap: 0.45rem;
+    color: rgba(255, 255, 255, 0.55);
     font-family: var(--font-body);
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    animation: bounceY 2s ease-in-out infinite;
+    animation: bounceY 2.2s ease-in-out infinite;
   }
 
   @keyframes bounceY {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(6px); }
   }
 
   .scroll-mouse {
     width: 22px;
     height: 34px;
-    border: 2px solid rgba(255,255,255,0.5);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
     border-radius: 11px;
     display: flex;
     justify-content: center;
@@ -259,21 +192,18 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   .scroll-wheel {
     width: 3px;
     height: 6px;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 2px;
     animation: scrollWheel 1.5s ease-in-out infinite;
   }
 
   @keyframes scrollWheel {
     0%, 100% { transform: translateY(0); opacity: 1; }
-    50% { transform: translateY(6px); opacity: 0.3; }
+    50%       { transform: translateY(6px); opacity: 0.25; }
   }
 
   @media (max-width: 640px) {
-    .hero-content { align-items: center; text-align: center; }
-    .hero-title { font-size: 2.75rem; }
-    .hero-features { justify-content: center; }
-    .hero-cta { justify-content: center; }
-    .hero-scroll-indicator { display: none; }
+    .hero-title { font-size: clamp(2.75rem, 11vw, 4rem); margin-bottom: 2rem; }
+    .hero-btn { padding: 0.9375rem 2rem; font-size: 1rem; }
   }
 </style>

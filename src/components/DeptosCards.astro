@@ -1,101 +1,69 @@
 ---
 // DeptosCards — La Casa de Kuki
-// Cards de presentación de departamentos en la Home → rutas dedicadas
+// Índice visual: dos botones-imagen grandes que dirigen a las páginas de cada departamento
 
 const deptos = [
   {
     id: 'inti',
-    emoji: '☀️',
     name: 'Departamento Inti',
-    tagline: 'Para venir en familia o con amigos y estar cómodos',
-    capacity: 'Hasta 6 personas',
-    highlights: ['1 cama matrimonial + 2 cuchetas', 'TV con Chromecast y buen Wi-Fi', 'Baño privado + amenities', 'Heladera y microondas'],
+    tagline: 'Hasta 6 personas · Familia o grupo de amigos',
     image: '/images/inti/IMG_3150.PNG',
     href: '/departamentos/inti',
-    color: 'var(--color-terracota)',
   },
   {
     id: 'killa',
-    emoji: '🌙',
     name: 'Departamento Killa',
-    tagline: 'Íntimo, ideal para parejas o familias chicas',
-    capacity: 'Hasta 4 personas',
-    highlights: ['1 cama matrimonial + 1 cucheta', 'Wi-Fi incluido', 'Baño privado + amenities', 'Kit con tés y matecito'],
+    tagline: 'Hasta 4 personas · Pareja o familia chica',
     image: '/images/killa/IMG_3160.PNG',
     href: '/departamentos/killa',
-    color: 'var(--color-marron)',
-  },
-  {
-    id: 'espacios',
-    emoji: '🔥',
-    name: 'Espacios Comunes',
-    tagline: 'Quincho, patio y unas vistas bárbaras',
-    capacity: 'Para todos los que se alojen',
-    highlights: ['Quincho con parrilla', 'Cocina completita', 'Estacionamiento seguro', 'Cerro de los 7 Colores ahí nomás'],
-    image: '/images/exterior/1000472082.JPG',
-    href: '/departamentos/espacios',
-    color: 'var(--color-terracota-dark)',
   },
 ];
 ---
 
 <section id="departamentos" class="deptos-section">
   <div class="section-wrapper">
+
     <div class="deptos-header">
       <p class="deptos-eyebrow">Elegí tu espacio</p>
-      <h2 class="section-title">Nuestros<br /><em>departamentos</em></h2>
-      <div class="section-divider"><span>✦</span></div>
-      <p class="section-subtitle">
-        Dos departamentos cómodos y un patio armado para que llegués y ya te sientas en casa.
-      </p>
+      <h2 class="section-title">Nuestros <em>departamentos</em></h2>
     </div>
 
     <div class="deptos-grid" role="list">
       {deptos.map((d) => (
-        <article class="depto-card" role="listitem" id={`depto-${d.id}`}>
-          <!-- Imagen con overlay -->
-          <div class="depto-img-wrap">
-            <img
-              src={d.image}
-              alt={`${d.name} — ${d.tagline}`}
-              class="depto-img"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="depto-img-overlay" aria-hidden="true"></div>
-            <span class="depto-emoji" aria-hidden="true">{d.emoji}</span>
-          </div>
+        <a
+          href={d.href}
+          class="depto-btn"
+          role="listitem"
+          id={`depto-btn-${d.id}`}
+          aria-label={`Conocé el ${d.name}`}
+        >
+          <!-- Imagen de fondo -->
+          <img
+            src={d.image}
+            alt={`Interior del ${d.name} — La Casa de Kuki`}
+            class="depto-btn-img"
+            loading="lazy"
+            decoding="async"
+          />
 
-          <!-- Contenido -->
-          <div class="depto-content">
-            <div class="depto-top">
-              <h3 class="depto-name">{d.name}</h3>
-              <span class="depto-capacity">{d.capacity}</span>
-            </div>
-            <p class="depto-tagline">{d.tagline}</p>
+          <!-- Overlay -->
+          <div class="depto-btn-overlay" aria-hidden="true"></div>
 
-            <!-- Highlights -->
-            <ul class="depto-highlights" aria-label={`Características de ${d.name}`}>
-              {d.highlights.map(h => (
-                <li>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                  </svg>
-                  {h}
-                </li>
-              ))}
-            </ul>
-
-            <a href={d.href} class="depto-cta" aria-label={`Ver galería completa de ${d.name}`}>
-              Ver galería completa
+          <!-- Texto -->
+          <div class="depto-btn-content">
+            <span class="depto-btn-tagline">{d.tagline}</span>
+            <h3 class="depto-btn-name">{d.name}</h3>
+            <span class="depto-btn-cta">
+              Conocé este depto
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
               </svg>
-            </a>
+            </span>
           </div>
-        </article>
+        </a>
       ))}
     </div>
+
   </div>
 </section>
 
@@ -107,7 +75,7 @@ const deptos = [
 
   .deptos-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .deptos-eyebrow {
@@ -117,47 +85,51 @@ const deptos = [
     color: var(--color-terracota);
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.625rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: var(--color-marron-dark);
+    text-align: center;
+    letter-spacing: -0.01em;
   }
 
   .section-title em {
     font-style: italic;
     color: var(--color-terracota);
-    display: block;
   }
 
-  /* Grid */
+  /* Grid de dos columnas */
   .deptos-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
   }
 
-  /* Card */
-  .depto-card {
-    background: white;
-    border-radius: 1.5rem;
-    overflow: hidden;
-    border: 1px solid var(--color-arena-light);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .depto-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(37, 26, 18, 0.14);
-  }
-
-  /* Imagen */
-  .depto-img-wrap {
+  /* Botón-imagen */
+  .depto-btn {
     position: relative;
-    aspect-ratio: 4/3;
+    display: block;
+    aspect-ratio: 3 / 2;
+    border-radius: 1.25rem;
     overflow: hidden;
-    flex-shrink: 0;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(37, 26, 18, 0.1);
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
   }
 
-  .depto-img {
+  .depto-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(37, 26, 18, 0.2);
+  }
+
+  .depto-btn-img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -165,151 +137,95 @@ const deptos = [
     display: block;
   }
 
-  .depto-card:hover .depto-img {
+  .depto-btn:hover .depto-btn-img {
     transform: scale(1.06);
   }
 
-  .depto-img-overlay {
+  /* Overlay: oscuro en reposo, un poco más claro al hover */
+  .depto-btn-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba(37, 26, 18, 0.5) 0%,
-      transparent 60%
+      rgba(20, 10, 5, 0.80) 0%,
+      rgba(20, 10, 5, 0.45) 55%,
+      rgba(20, 10, 5, 0.15) 100%
+    );
+    transition: background 0.35s ease;
+  }
+
+  .depto-btn:hover .depto-btn-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(20, 10, 5, 0.70) 0%,
+      rgba(20, 10, 5, 0.32) 55%,
+      rgba(20, 10, 5, 0.08) 100%
     );
   }
 
-  .depto-emoji {
+  /* Contenido de texto */
+  .depto-btn-content {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    font-size: 1.75rem;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
-    line-height: 1;
-  }
-
-  /* Contenido */
-  .depto-content {
-    padding: 1.5rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 2rem 1.75rem;
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
-    flex: 1;
+    gap: 0.375rem;
   }
 
-  .depto-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 0.75rem;
-  }
-
-  .depto-name {
-    font-family: var(--font-display);
-    font-size: 1.375rem;
-    font-weight: 800;
-    color: var(--color-marron-dark);
-    line-height: 1.2;
-    margin: 0;
-  }
-
-  .depto-capacity {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--color-terracota);
-    background: rgba(184, 84, 48, 0.1);
-    padding: 0.2rem 0.65rem;
-    border-radius: 9999px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-top: 0.15rem;
-  }
-
-  .depto-tagline {
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    color: var(--color-carbon-light);
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  .depto-highlights {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    flex: 1;
-  }
-
-  .depto-highlights li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  .depto-btn-tagline {
     font-family: var(--font-body);
     font-size: 0.8125rem;
-    color: var(--color-carbon-light);
-    line-height: 1.4;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.72);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
-  .depto-highlights li svg {
-    color: var(--color-terracota);
-    flex-shrink: 0;
+  .depto-btn-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-weight: 800;
+    color: white;
+    line-height: 1.1;
+    margin: 0;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
   }
 
-  .depto-cta {
+  .depto-btn-cta {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    padding: 0.75rem 1.25rem;
-    background-color: var(--color-terracota);
-    color: white;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
     font-family: var(--font-body);
-    font-size: 0.875rem;
+    font-size: 0.9rem;
     font-weight: 700;
-    border-radius: 0.75rem;
-    text-decoration: none;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    margin-top: auto;
-    letter-spacing: 0.02em;
+    color: var(--color-arena);
+    letter-spacing: 0.03em;
+    transition: gap 0.25s ease;
   }
 
-  .depto-cta:hover {
-    background-color: var(--color-terracota-dark);
-    transform: translateY(-1px);
+  .depto-btn:hover .depto-btn-cta {
+    gap: 0.5rem;
   }
 
   /* Responsive */
-  @media (max-width: 1024px) {
-    .deptos-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    /* La tercera card (Espacios) ocupa el ancho completo en tablet */
-    .depto-card:last-child {
-      grid-column: span 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    .depto-card:last-child .depto-img-wrap {
-      aspect-ratio: unset;
-    }
-  }
-
   @media (max-width: 640px) {
     .deptos-grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
-    .depto-card:last-child {
-      grid-column: span 1;
-      display: flex;
-      flex-direction: column;
+
+    .depto-btn {
+      aspect-ratio: 4 / 3;
     }
-    .depto-card:last-child .depto-img-wrap {
-      aspect-ratio: 4/3;
+
+    .depto-btn-content {
+      padding: 1.5rem;
     }
+
     .deptos-section {
       padding: 4rem 0 5rem;
     }
