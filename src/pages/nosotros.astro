@@ -44,24 +44,9 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
           <p>
             Purmamarca es uno de esos lugares que transforman. El Cerro de los Siete Colores, el mercado artesanal, la quietud del atardecer… Nosotros somos el punto de partida y regreso de todo eso.
           </p>
-        </div>
-
-        <!-- Stats visuales -->
-        <div class="nosotros-stats">
-          <div class="stat-item">
-            <span class="stat-num">2</span>
-            <span class="stat-label">Departamentos</span>
-          </div>
-          <div class="stat-divider" aria-hidden="true"></div>
-          <div class="stat-item">
-            <span class="stat-num">10</span>
-            <span class="stat-label">Huéspedes máx.</span>
-          </div>
-          <div class="stat-divider" aria-hidden="true"></div>
-          <div class="stat-item">
-            <span class="stat-num">🐾</span>
-            <span class="stat-label">Pet Friendly</span>
-          </div>
+          <p>
+            Detrás de cada detalle estamos nosotros, trabajando en familia: Lisandro te acompaña desde la primera consulta y organiza tu reserva, mientras que Claudia te recibe con los brazos abiertos apenas ponés un pie en la casa. Juntos, y siempre con la compañía incondicional de Kuki, nos aseguramos de que no te falte nada.
+          </p>
         </div>
       </article>
 
@@ -240,48 +225,7 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
     max-width: 720px;
   }
 
-  .nosotros-stats {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-top: 2.5rem;
-    padding: 2rem 2.5rem;
-    background: var(--color-arena-light);
-    border-radius: 1.25rem;
-    border: 1px solid var(--color-arena);
-    width: fit-content;
-  }
 
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.375rem;
-    text-align: center;
-  }
-
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    font-weight: 900;
-    color: var(--color-terracota);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-family: var(--font-body);
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: var(--color-carbon-light);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: var(--color-arena);
-  }
 
   /* Sección deptos */
   .nosotros-section-title {
@@ -421,23 +365,11 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
     .depto-detail--reverse .depto-detail-body {
       order: unset;
     }
-    .nosotros-stats {
-      width: 100%;
-      justify-content: center;
-    }
   }
 
   @media (max-width: 480px) {
     .nosotros-main { padding: 3rem 0 4rem; }
     .nosotros-content { gap: 3rem; }
-    .nosotros-stats {
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .stat-divider {
-      width: 40px;
-      height: 1px;
-    }
     .nosotros-cta-wrap { padding: 2.5rem 1.25rem; }
   }
 </style>
