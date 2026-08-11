@@ -1,44 +1,48 @@
-## Listado de cositas que faltan para terminar de una vez por toda la etapa v1 del sitio
-### Una vez la tengamos lista, saldrá al mercado para su uso comercial.
+# Roadmap de Desarrollo: La Casa de Kuki 🏠
 
-# Dominio
-- Contratar el dominio publico del sitio: lacasadekuki.com
+Este documento define las tareas técnicas y de contenido para las próximas versiones del sitio web. 
 
-# Marketing
-- Conectar con meta business para poder gestionar anuncios.
-- Pensar estrategias de marketing para salir en redes y posicionarnos como marca en jujuy.
-- Esto a traves de SEO (google, meta, tiktok, etc) y GEO (para que la IA nos recomiende).
+---
 
-# Metricas
-- agregar metricas para poder medir el funcionamiento del sitio.
-- Métricas y Tracking (Google Analytics):
-"Integrar Google Analytics 4 (GA4) en el proyecto. Configurar el script de gtag.js en el <head> del Layout principal. Es crucial utilizar la integración @astrojs/partytown para cargar el script analítico en un web worker y asegurar que no impacte negativamente en la velocidad de carga en celulares. Dejar la variable del 'Measurement ID' preparada para leerse desde un archivo .env."
---- El único paso extra que vas a tener que hacer de tu lado es entrar a Google Analytics, registrar la propiedad web ([www.lacasadekuki.com](https://www.lacasadekuki.com)) y copiar el ID de Medición (un código que empieza con G-XXXXXXXXXX). Se lo pasas al agente para que lo configure y con eso ya tenés la V1 lista para salir a la cancha.
+## 🚀 VERSIÓN 1.0: MVP & Lanzamiento Comercial
+**Objetivo:** Tener una web rápida, funcional, estéticamente norteña y lista para recibir tráfico real y medirlo.
 
-# Pagina - Visuales
-- Poner imagenes optimizadas, nuevas y reorganizadas del lugar. (ver tema de extensiones para que no pierdan calidad y sean 100% compatibles para todos).
+### 1. Métricas y Analytics (Tracking)
+- [ ] **Google Analytics (GA4):** Integrar GA4 utilizando `@astrojs/partytown` para ejecutar el script `gtag.js` en un web worker y no penalizar el rendimiento en celulares.
+- [ ] Configurar la lectura del 'Measurement ID' desde las variables de entorno (`.env`).
 
-- Landing page llamativa y profesional, destacable contra la competencia.
-- Mejorar el home con una foto deterministica. Es decir, que siempre se muestre la misma foto al entrar al sitio.
-- hacerlo lo mas llamativo posible parra invitar a la gente a recorrer nuestra web.
+### 2. Optimización de Imágenes y Rendimiento
+- [ ] Convertir todas las imágenes de `/public/images/` a formato **WebP**.
+- [ ] Implementar el componente nativo `<Image />` de Astro para garantizar lazy loading y compresión automática.
+- [ ] **Hero Section Fijo:** Configurar una imagen determinística (fija y de alto impacto) para el Hero, asegurando que cargue de inmediato (sin lazy loading).
 
-- Cambiar los estilos css para que se vea mas bonito y profesional. (en caso de que sea necesario)
+### 3. Refactor UI/UX (Mobile-First)
+- [ ] **Hero Rediseñado:** Ajustar el Hero para que ocupe el 100% del alto (h-screen), con un *overlay* oscuro que permita leer perfectamente el H1 principal y el botón CTA ("Ver disponibilidad"). Eliminar textos largos de esta sección.
+- [ ] **Estilos Norteños:** Ajustar la paleta de colores en Tailwind. Reemplazar marrones planos por tonos terracota/arcilla y agregar texturas sutiles si es posible para darle un aspecto más orgánico y menos corporativo.
+- [ ] **Prueba Social / Trust:** Agregar un enlace directo al perfil de Google Mi Negocio en el Footer y en la sección de Contacto.
 
-- Dar descripciones mas certeras, humanas y llamativas. No son solo lo que ya tenemos, entonces hay que mejorarlo. (Poner mas informacion, ser mas especificos en lo que respecta a la casa, etc).
+### 4. Tareas de Gestión (Fuera del scope del agente)
+- [ ] *Lisandro:* Comprar y conectar el dominio `lacasadekuki.com`.
+- [ ] *Lisandro:* Generar el ID de medición en GA4 y agregarlo a Vercel/entorno.
 
+---
 
-# Ideas principales para la v2
+## 🧗‍♂️ VERSIÓN 2.0: Crecimiento, SEO y Experiencia
+**Objetivo:** Posicionar la marca en buscadores, mejorar la retención del usuario y ofrecer una experiencia integral de turismo en la Quebrada.
 
-- Mejorar la seccion de FAQs, poniendo las mas recurrentes.
+### 1. Arquitectura de Contenido y SEO (Guías Locales)
+- [ ] Crear el layout y las rutas dinámicas (`/guias/[destino]`) para publicar contenido sobre atracciones locales (Tilcara, Purmamarca, Humahuaca, Maimará).
+- [ ] Optimizar meta-etiquetas (títulos, descripciones, Open Graph) de todas las páginas para mejorar el CTR en Google y redes sociales.
 
-- Mejorar las descripciones de todo el sitio en general, ya que hay demasiadas cosas por describir, y las que ya están descritas están demasiado iosas.
+### 2. Ecosistema Local (Partnerships)
+- [ ] Desarrollar una nueva sección/componente de "Recomendaciones Locales" (comercios asociados).
+- [ ] Integrar tarjetas de contacto rápido para: Remís Turístico (Sergio) y Gastronomía (Peña Marito / Tío Dani).
 
-- Asociarnos con distintos comercios turisticos de la zona para agregarlos en nuestra pagina, y que tengan facil acceso a ellos:
-- Remis turistico - Sergio
-- Peña Marito - Piter, tio dani, tio marito.
+### 3. Polish de UI e Interacciones
+- [ ] **Micro-interacciones:** Mejorar las animaciones CSS (hover states, transiciones, bounce sutil) en botones interactivos principales (WhatsApp, Instagram, CTA de reservas).
+- [ ] **FAQ Dinámico:** Refactorizar la sección de Preguntas Frecuentes para que soporte una estructura de datos más robusta, permitiendo agregar consultas recurrentes basadas en el feedback de los clientes.
+- [ ] **Refinamiento de Textos:** Actualización general del *copywriting* en componentes internos para asegurar un tono 100% humano y cálido.
 
-- Agregar Guias de cosas que se pueden hacer por la zona.
-- Que atracciones hay cerca de la casa.
-- Que se puede hacer en Tilcara, Purmamarca, Humahuaca, Maimará, San Salvador de Jujuy, etc.
-
-- mejorar animaciones en los botones interactivos (whatsapp, instagram, etc).
+### 4. Tareas de Gestión (Fuera del scope del agente)
+- [ ] *Lisandro:* Conectar Meta Business y configurar el Píxel de Meta (se solicitará al agente la inyección del script en su momento).
+- [ ] *Lisandro:* Redactar el contenido de las guías turísticas.
