@@ -20,6 +20,7 @@ Este documento define las tareas técnicas y de contenido para las próximas ver
 - [ ] **Hero Rediseñado:** Ajustar el Hero para que ocupe el 100% del alto (h-screen), con un *overlay* oscuro que permita leer perfectamente el H1 principal y el botón CTA ("Ver disponibilidad"). Eliminar textos largos de esta sección.
 - [ ] **Estilos Norteños:** Ajustar la paleta de colores en Tailwind. Reemplazar marrones planos por tonos terracota/arcilla y agregar texturas sutiles si es posible para darle un aspecto más orgánico y menos corporativo.
 - [ ] **Prueba Social / Trust:** Agregar un enlace directo al perfil de Google Mi Negocio en el Footer y en la sección de Contacto.
+- [ ] **Restricciones UX:** Poner un limite en las fechas del formulario. Nadie deberia entrar a boludear con fechas muy largas, pero bueno... mejor prevenir boludeces en el bot de automatizaciones.
 
 ### 4. Tareas de Gestión (Fuera del scope del agente)
 - [ ] *Lisandro:* Comprar y conectar el dominio `lacasadekuki.com`.
