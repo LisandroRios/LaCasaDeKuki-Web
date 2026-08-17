@@ -21,6 +21,9 @@ Este documento define las tareas técnicas y de contenido para las próximas ver
 - [ ] **Estilos Norteños:** Ajustar la paleta de colores en Tailwind. Reemplazar marrones planos por tonos terracota/arcilla y agregar texturas sutiles si es posible para darle un aspecto más orgánico y menos corporativo.
 - [ ] **Prueba Social / Trust:** Agregar un enlace directo al perfil de Google Mi Negocio en el Footer y en la sección de Contacto.
 - [ ] **Restricciones UX:** Poner un limite en las fechas del formulario. Nadie deberia entrar a boludear con fechas muy largas, pero bueno... mejor prevenir boludeces en el bot de automatizaciones. ademas, agregar el apartado para que elijan el departamento, de esta forma podemos facilitar el tema con la automatización.
+- [ ] **IMPORTANTISIMO:** Si o si poner el limite de las fechas. Porque no tomamos reservas para todo el año. Ir haciendo por trimestres/semestres, para no quedar atrasados con el tema de los precios.
+Con ello, ya no haría tanta falta el cambiar el valor a cada rato en la automatización.
+
 
 
 ### 4. Tareas de Gestión (Fuera del scope del agente)
