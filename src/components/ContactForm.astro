@@ -189,13 +189,14 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
       .substring(0, 500);
   }
 
-  // Fechas: ingreso debe ser antes que egreso
-  function isValidDates(ingreso, egreso) {
+  // Fechas: ingreso debe ser antes que egreso y ambas dentro del semestre
+  function isValidDates(ingreso, egreso, maxDate) {
     const ingresoDate = new Date(ingreso);
     const egresoDate = new Date(egreso);
+    const maxAllowed = new Date(maxDate);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    return ingresoDate >= today && egresoDate > ingresoDate;
+    return ingresoDate >= today && egresoDate > ingresoDate && egresoDate <= maxAllowed;
   }
 
   function showError(msg) {
@@ -220,6 +221,18 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
   ingresoInput?.addEventListener('change', () => {
     if (egresoInput) egresoInput.setAttribute('min', (ingresoInput).value || today);
   });
+
+  // Fijar fecha máxima: fin del semestre actual
+  // Enero–Junio → 30/06 | Julio–Diciembre → 31/12
+  // Actualizar cada semestre para abrir nuevas disponibilidades con precios actualizados.
+  const nowForMax = new Date();
+  const currentMonth = nowForMax.getMonth(); // 0-indexed (0=enero, 11=diciembre)
+  const currentYear = nowForMax.getFullYear();
+  const maxDate = currentMonth < 6
+    ? `${currentYear}-06-30`   // primer semestre
+    : `${currentYear}-12-31`;  // segundo semestre
+  if (ingresoInput) ingresoInput.setAttribute('max', maxDate);
+  if (egresoInput) egresoInput.setAttribute('max', maxDate);
 
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -253,8 +266,9 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
       return;
     }
 
-    if (!isValidDates(ingreso, egreso)) {
-      showError('Las fechas no son válidas. El ingreso debe ser hoy o posterior, y el egreso debe ser después del ingreso.');
+    if (!isValidDates(ingreso, egreso, maxDate)) {
+      const [maxY, maxM, maxD] = maxDate.split('-');
+      showError(`Las fechas no son válidas. El ingreso debe ser hoy o posterior, el egreso debe ser después del ingreso, y ambas fechas deben estar dentro del semestre actual (hasta el ${maxD}/${maxM}/${maxY}).`);
       return;
     }
 
