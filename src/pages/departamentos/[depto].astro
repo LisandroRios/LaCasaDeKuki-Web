@@ -26,6 +26,16 @@ const data: Record<DeptoId, {
   images: { src: string; alt: string }[];
   waMessage: string;
   color: string;
+  subSpaces?: {
+    id: string;
+    name: string;
+    emoji: string;
+    shortDesc: string;
+    longDesc: string;
+    image: string;
+    imageAlt: string;
+    images: { src: string; alt: string }[];
+  }[];
 }> = {
   inti: {
     title: 'Departamento Inti ☀️ — La Casa de Kuki · Purmamarca',
@@ -88,7 +98,7 @@ const data: Record<DeptoId, {
   },
   espacios: {
     title: 'Espacios Comunes — La Casa de Kuki · Purmamarca',
-    description: 'Quincho con parrilla, cocina completa, estacionamiento privado y vistas a los cerros. Espacios compartidos de La Casa de Kuki en Purmamarca, Jujuy.',
+    description: 'Quincho con parrilla, horno de barro y cocina a gas; estacionamiento privado cubierto y vistas privilegiadas a los cerros. Espacios compartidos de La Casa de Kuki en Purmamarca, Jujuy.',
     emoji: '🔥',
     tagline: 'Quincho, estacionamiento y vistas privilegiadas',
     capacity: 'Para todos los huéspedes',
@@ -102,10 +112,51 @@ const data: Record<DeptoId, {
       '✅ Acceso libre para todos los huéspedes',
     ],
     images: [
+      { src: '/images/quincho/quincho1.png', alt: 'Quincho de La Casa de Kuki — parrilla, horno de barro y cocina a gas' },
+      { src: '/images/estacionamiento/estacionamiento1.png', alt: 'Estacionamiento privado cubierto dentro del predio' },
+      { src: '/images/vistas/vistas1.png', alt: 'Vistas privilegiadas a los cerros de Purmamarca' },
       { src: '/images/exterior/1000472082.JPG', alt: 'Frente de La Casa de Kuki — exterior y acceso' },
-      { src: '/images/exterior/1000367568.JPG', alt: 'Jardín y estacionamiento privado dentro del predio' },
+      { src: '/images/exterior/1000367568.JPG', alt: 'Jardín y acceso exterior del predio' },
     ],
     waMessage: '¡Hola! Vi la web de La Casa de Kuki. Quiero consultar disponibilidad. ¿Podría indicarme más información?',
+    subSpaces: [
+      {
+        id: 'quincho',
+        name: 'Quincho',
+        emoji: '🔥',
+        shortDesc: 'Cocinar en Purmamarca no tiene precio. Parrilla, horno de barro, cocina a gas y los cerros como fondo.',
+        longDesc: 'Nuestro quincho es el corazón social de La Casa de Kuki. Contamos con asador y parrilla lista para usar, horno de barro para los más aventureros y cocina a gas con todos los utensilios y vajilla necesarios para preparar lo que se te antoje. Las mesas al aire libre te dejan comer rodeado de los cerros que caracterizan a Purmamarca. El uso es libre para todos los huéspedes: el único pedido es dejarlo limpio y ordenado para quienes vienen después.',
+        image: '/images/quincho/quincho1.png',
+        imageAlt: 'Quincho de La Casa de Kuki — parrilla, horno de barro y cocina a gas',
+        images: [
+          { src: '/images/quincho/quincho1.png', alt: 'Quincho — parrilla, horno de barro y cocina a gas' },
+        ],
+      },
+      {
+        id: 'garage',
+        name: 'Garage',
+        emoji: '🚗',
+        shortDesc: 'Tu auto, seguro y dentro del predio. Estacionamiento privado sin costo adicional, incluido en tu estadía.',
+        longDesc: 'Sabemos que viajar con el auto es una parte importante de explorar la Quebrada. Por eso, el estacionamiento privado dentro del predio está incluido sin costo adicional en tu estadía. Es cubierto, seguro, y con acceso directo a las instalaciones. Podés llegar tranquilo, que tu vehículo está en buenas manos.',
+        image: '/images/estacionamiento/estacionamiento1.png',
+        imageAlt: 'Estacionamiento privado cubierto dentro del predio',
+        images: [
+          { src: '/images/estacionamiento/estacionamiento1.png', alt: 'Garage — estacionamiento privado cubierto dentro del predio' },
+        ],
+      },
+      {
+        id: 'vistas',
+        name: 'Vistas Privilegiadas',
+        emoji: '⛰',
+        shortDesc: 'Los cerros de Purmamarca como fondo permanente. Despertarse con esa vista no tiene precio.',
+        longDesc: 'Estamos ubicados en una de las zonas más tranquilas de Purmamarca, lo que nos regala vistas directas a los cerros de colores sin obstáculos. Desde los espacios comunes podés disfrutar del amanecer sobre la roca, el silencio del mediodía y los cielos estrellados de la noche. Una experiencia que pocas fotos logran capturar del todo.',
+        image: '/images/vistas/vistas1.png',
+        imageAlt: 'Vistas privilegiadas a los cerros de Purmamarca desde La Casa de Kuki',
+        images: [
+          { src: '/images/vistas/vistas1.png', alt: 'Vistas — cerros de Purmamarca desde La Casa de Kuki' },
+        ],
+      },
+    ],
   },
 };
 
@@ -145,61 +196,195 @@ const heroImage = deptoData.images[0];
   <main id="main-content">
     <div class="section-wrapper dpage-main">
 
-      <!-- Features + CTA -->
-      <div class="dpage-info">
-        <div class="dpage-features-wrap">
-          <h2 class="dpage-features-title">Incluye</h2>
-          <ul class="dpage-features" aria-label={`Características incluidas en ${depto}`}>
-            {deptoData.features.map(f => <li>{f}</li>)}
-          </ul>
-        </div>
-        <div class="dpage-cta-wrap">
-          <p class="dpage-cta-label">¿Te interesa este espacio?</p>
-          <a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn-primary dpage-cta">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
-            </svg>
-            Consultar disponibilidad
-          </a>
-          <a href="/#contacto" class="btn-ghost dpage-cta-form">
-            Ver formulario de fechas
-          </a>
-        </div>
-      </div>
+      {depto === 'espacios' ? (
+        <>
+          <!-- Cards de sub-espacios -->
+          <section class="esp-cards-section" aria-labelledby="esp-cards-title">
+            <p class="esp-section-eyebrow">Explorá cada rincón</p>
+            <h2 id="esp-cards-title" class="esp-section-title">Nuestros <em>espacios comunes</em></h2>
+            <div class="esp-cards-grid">
+              {(deptoData as any).subSpaces.map((sp: any) => (
+                <article class="esp-card" id={`esp-card-${sp.id}`}>
+                  <!-- Foto principal -->
+                  <div class="esp-card-img-wrap">
+                    <img
+                      src={sp.image}
+                      alt={sp.imageAlt}
+                      class="esp-card-img"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div class="esp-card-img-overlay" aria-hidden="true"></div>
+                    <span class="esp-card-emoji" aria-hidden="true">{sp.emoji}</span>
+                  </div>
+                  <!-- Cuerpo -->
+                  <div class="esp-card-body">
+                    <h3 class="esp-card-name">{sp.name}</h3>
+                    <p class="esp-card-short">{sp.shortDesc}</p>
+                    <button
+                      class="esp-card-toggle"
+                      id={`toggle-${sp.id}`}
+                      aria-expanded="false"
+                      aria-controls={`panel-${sp.id}`}
+                    >
+                      Ver más
+                      <svg class="esp-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <!-- Panel expandible -->
+                  <div
+                    class="esp-panel"
+                    id={`panel-${sp.id}`}
+                    role="region"
+                    aria-labelledby={`toggle-${sp.id}`}
+                    hidden
+                  >
+                    <p class="esp-panel-desc">{sp.longDesc}</p>
+                    {sp.images.length > 0 && (
+                      <div class="esp-panel-gallery" role="list">
+                        {sp.images.map((img: any, i: number) => (
+                          <button
+                            class="dpage-item"
+                            role="listitem"
+                            aria-label={`Ver foto: ${img.alt}`}
+                            data-src={img.src}
+                            data-alt={img.alt}
+                            data-index={i}
+                            data-space={sp.id}
+                          >
+                            <img
+                              src={img.src}
+                              alt={img.alt}
+                              loading="lazy"
+                              decoding="async"
+                              class="dpage-img"
+                            />
+                            <div class="dpage-item-overlay" aria-hidden="true">
+                              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                              </svg>
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
 
-      <!-- Galería completa -->
-      <section class="dpage-gallery" aria-labelledby="gallery-heading">
-        <h2 id="gallery-heading" class="dpage-gallery-title">
-          Galería de fotos
-          <span class="dpage-photo-count">({deptoData.images.length} fotos)</span>
-        </h2>
-        <div class="dpage-grid" id="dpage-grid" role="list">
-          {deptoData.images.map((img, i) => (
-            <button
-              class={`dpage-item ${i === 0 ? 'dpage-item--wide' : ''}`}
-              role="listitem"
-              aria-label={`Ver foto: ${img.alt}`}
-              data-src={img.src}
-              data-alt={img.alt}
-              data-index={i}
-            >
-              <img
-                src={img.src}
-                alt={img.alt}
-                loading={i < 3 ? 'eager' : 'lazy'}
-                decoding="async"
-                class="dpage-img"
-              />
-              <div class="dpage-item-overlay" aria-hidden="true">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          <!-- CTA central -->
+          <div class="esp-cta-block">
+            <p class="dpage-cta-label">¿Querés conocer más o hacer una reserva?</p>
+            <div class="esp-cta-btns">
+              <a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn-primary dpage-cta">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
                 </svg>
-              </div>
-            </button>
-          ))}
-        </div>
-      </section>
+                Consultar disponibilidad
+              </a>
+              <a href="/#contacto" class="btn-ghost dpage-cta-form">
+                Ver formulario de fechas
+              </a>
+            </div>
+          </div>
+
+          <!-- Galería completa de todos los espacios -->
+          <section class="dpage-gallery" aria-labelledby="gallery-heading">
+            <h2 id="gallery-heading" class="dpage-gallery-title">
+              Todas las fotos
+              <span class="dpage-photo-count">({deptoData.images.length} fotos)</span>
+            </h2>
+            <div class="dpage-grid" id="dpage-grid" role="list">
+              {deptoData.images.map((img, i) => (
+                <button
+                  class={`dpage-item ${i === 0 ? 'dpage-item--wide' : ''}`}
+                  role="listitem"
+                  aria-label={`Ver foto: ${img.alt}`}
+                  data-src={img.src}
+                  data-alt={img.alt}
+                  data-index={i}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    loading={i < 3 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    class="dpage-img"
+                  />
+                  <div class="dpage-item-overlay" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </section>
+        </>
+      ) : (
+        <>
+          <!-- Features + CTA -->
+          <div class="dpage-info">
+            <div class="dpage-features-wrap">
+              <h2 class="dpage-features-title">Incluye</h2>
+              <ul class="dpage-features" aria-label={`Características incluidas en ${depto}`}>
+                {deptoData.features.map(f => <li>{f}</li>)}
+              </ul>
+            </div>
+            <div class="dpage-cta-wrap">
+              <p class="dpage-cta-label">¿Te interesa este espacio?</p>
+              <a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn-primary dpage-cta">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
+                </svg>
+                Consultar disponibilidad
+              </a>
+              <a href="/#contacto" class="btn-ghost dpage-cta-form">
+                Ver formulario de fechas
+              </a>
+            </div>
+          </div>
+
+          <!-- Galería completa -->
+          <section class="dpage-gallery" aria-labelledby="gallery-heading">
+            <h2 id="gallery-heading" class="dpage-gallery-title">
+              Galería de fotos
+              <span class="dpage-photo-count">({deptoData.images.length} fotos)</span>
+            </h2>
+            <div class="dpage-grid" id="dpage-grid" role="list">
+              {deptoData.images.map((img, i) => (
+                <button
+                  class={`dpage-item ${i === 0 ? 'dpage-item--wide' : ''}`}
+                  role="listitem"
+                  aria-label={`Ver foto: ${img.alt}`}
+                  data-src={img.src}
+                  data-alt={img.alt}
+                  data-index={i}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    loading={i < 3 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    class="dpage-img"
+                  />
+                  <div class="dpage-item-overlay" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </section>
+        </>
+      )}
 
     </div>
   </main>
@@ -233,8 +418,42 @@ const heroImage = deptoData.images[0];
 </Layout>
 
 <script>
-  // Lightbox
-  const buttons = document.querySelectorAll<HTMLButtonElement>('.dpage-item');
+  // ── Accordion para las cards de espacios ──────────────────────────────
+  const toggles = document.querySelectorAll<HTMLButtonElement>('.esp-card-toggle');
+  toggles.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panelId = btn.getAttribute('aria-controls')!;
+      const panel = document.getElementById(panelId) as HTMLElement;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      // Cerrar todos los demás
+      toggles.forEach(other => {
+        if (other !== btn) {
+          other.setAttribute('aria-expanded', 'false');
+          const otherId = other.getAttribute('aria-controls')!;
+          const otherPanel = document.getElementById(otherId) as HTMLElement;
+          if (otherPanel) otherPanel.hidden = true;
+          other.textContent = 'Ver más';
+          const icon = other.querySelector('.esp-toggle-icon') as HTMLElement;
+          if (icon) { other.appendChild(icon); }
+        }
+      });
+      // Toggle actual
+      if (isOpen) {
+        btn.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+        btn.querySelector('span')?.remove();
+        btn.childNodes[0].textContent = 'Ver más';
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        panel.hidden = false;
+        btn.childNodes[0].textContent = 'Ver menos';
+        // Scroll suave al panel
+        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      }
+    });
+  });
+
+  // ── Lightbox unificado (galería completa + paneles) ───────────────────
   const lb = document.getElementById('lightbox') as HTMLElement;
   const lbImg = document.getElementById('lb-img') as HTMLImageElement;
   const lbCaption = document.getElementById('lb-caption');
@@ -244,44 +463,58 @@ const heroImage = deptoData.images[0];
   const lbPrev = document.getElementById('lb-prev');
   const lbNext = document.getElementById('lb-next');
   let current = 0;
+  let activeItems: { src: string; alt: string }[] = [];
 
-  const items = Array.from(buttons).map(b => ({ src: b.dataset.src!, alt: b.dataset.alt! }));
-
-  function open(i: number) {
-    current = i;
+  function openLightbox(items: { src: string; alt: string }[], index: number) {
+    activeItems = items;
+    current = index;
     if (!lb || !lbImg || !lbCaption) return;
-    lbImg.src = items[i].src;
-    lbImg.alt = items[i].alt;
-    lbCaption.textContent = items[i].alt;
-    if (lbCounter) lbCounter.textContent = `${i + 1} / ${items.length}`;
+    lbImg.src = items[index].src;
+    lbImg.alt = items[index].alt;
+    lbCaption.textContent = items[index].alt;
+    if (lbCounter) lbCounter.textContent = `${index + 1} / ${items.length}`;
     lb.hidden = false;
     document.body.style.overflow = 'hidden';
   }
 
-  function close() {
+  function closeLightbox() {
     lb.hidden = true;
     document.body.style.overflow = '';
   }
 
-  function nav(d: number) {
-    current = (current + d + items.length) % items.length;
+  function navLightbox(d: number) {
+    current = (current + d + activeItems.length) % activeItems.length;
     if (!lbImg || !lbCaption) return;
-    lbImg.src = items[current].src;
-    lbImg.alt = items[current].alt;
-    lbCaption.textContent = items[current].alt;
-    if (lbCounter) lbCounter.textContent = `${current + 1} / ${items.length}`;
+    lbImg.src = activeItems[current].src;
+    lbImg.alt = activeItems[current].alt;
+    lbCaption.textContent = activeItems[current].alt;
+    if (lbCounter) lbCounter.textContent = `${current + 1} / ${activeItems.length}`;
   }
 
-  buttons.forEach((btn, i) => btn.addEventListener('click', () => open(i)));
-  lbClose?.addEventListener('click', close);
-  lbBackdrop?.addEventListener('click', close);
-  lbPrev?.addEventListener('click', () => nav(-1));
-  lbNext?.addEventListener('click', () => nav(1));
+  // Botones del grid principal (#dpage-grid)
+  const mainGrid = document.getElementById('dpage-grid');
+  if (mainGrid) {
+    const mainBtns = Array.from(mainGrid.querySelectorAll<HTMLButtonElement>('.dpage-item'));
+    const mainItems = mainBtns.map(b => ({ src: b.dataset.src!, alt: b.dataset.alt! }));
+    mainBtns.forEach((btn, i) => btn.addEventListener('click', () => openLightbox(mainItems, i)));
+  }
+
+  // Botones de cada panel de espacio
+  document.querySelectorAll<HTMLElement>('.esp-panel-gallery').forEach(gallery => {
+    const panelBtns = Array.from(gallery.querySelectorAll<HTMLButtonElement>('.dpage-item'));
+    const panelItems = panelBtns.map(b => ({ src: b.dataset.src!, alt: b.dataset.alt! }));
+    panelBtns.forEach((btn, i) => btn.addEventListener('click', () => openLightbox(panelItems, i)));
+  });
+
+  lbClose?.addEventListener('click', closeLightbox);
+  lbBackdrop?.addEventListener('click', closeLightbox);
+  lbPrev?.addEventListener('click', () => navLightbox(-1));
+  lbNext?.addEventListener('click', () => navLightbox(1));
   document.addEventListener('keydown', e => {
     if (lb?.hidden) return;
-    if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') nav(-1);
-    if (e.key === 'ArrowRight') nav(1);
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
   });
 
   // Animación de entrada de la grilla
@@ -626,7 +859,201 @@ const heroImage = deptoData.images[0];
   }
   .lightbox-nav-btn:hover { background: rgba(255,255,255,0.3); }
 
+  /* ── Espacios Comunes: cards ───────────────────── */
+  .esp-cards-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .esp-section-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: var(--color-terracota);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.625rem;
+    text-align: center;
+  }
+
+  .esp-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    color: var(--color-marron-dark);
+    text-align: center;
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+
+  .esp-section-title em {
+    font-style: italic;
+    color: var(--color-terracota);
+  }
+
+  .esp-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .esp-card {
+    background: white;
+    border: 1.5px solid var(--color-arena);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .esp-card:hover {
+    box-shadow: 0 12px 40px rgba(193, 96, 58, 0.14);
+    transform: translateY(-4px);
+  }
+
+  .esp-card-img-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+
+  .esp-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+
+  .esp-card:hover .esp-card-img {
+    transform: scale(1.06);
+  }
+
+  .esp-card-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(37,26,18,0.55) 0%, transparent 60%);
+  }
+
+  .esp-card-emoji {
+    position: absolute;
+    bottom: 0.875rem;
+    left: 1rem;
+    font-size: 1.75rem;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+  }
+
+  .esp-card-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .esp-card-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-marron-dark);
+    margin: 0;
+  }
+
+  .esp-card-short {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-carbon-light);
+    line-height: 1.65;
+    margin: 0;
+    flex: 1;
+  }
+
+  .esp-card-toggle {
+    margin-top: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-terracota);
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: gap 0.2s ease, opacity 0.2s ease;
+    align-self: flex-start;
+  }
+
+  .esp-card-toggle:hover {
+    gap: 0.6rem;
+    opacity: 0.8;
+  }
+
+  .esp-toggle-icon {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .esp-card-toggle[aria-expanded="true"] .esp-toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Panel expandible */
+  .esp-panel {
+    background: var(--color-arena-light);
+    border-top: 1.5px solid var(--color-arena);
+    padding: 1.5rem;
+  }
+
+  .esp-panel[hidden] { display: none; }
+
+  .esp-panel-desc {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-carbon-light);
+    line-height: 1.8;
+    margin: 0 0 1.25rem;
+  }
+
+  .esp-panel-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.75rem;
+  }
+
+  /* CTA central en espacios */
+  .esp-cta-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background: var(--color-arena-light);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    border: 1px solid var(--color-arena);
+    text-align: center;
+  }
+
+  .esp-cta-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   /* Responsive */
+  @media (max-width: 900px) {
+    .esp-cards-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
   @media (max-width: 768px) {
     .dpage-info {
       grid-template-columns: 1fr;
@@ -639,6 +1066,15 @@ const heroImage = deptoData.images[0];
     }
     .dpage-item--wide {
       grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .esp-cards-grid {
+      grid-template-columns: 1fr;
+    }
+    .esp-cta-btns {
+      flex-direction: column;
     }
   }
 
