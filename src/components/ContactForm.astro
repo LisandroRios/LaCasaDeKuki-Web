@@ -120,7 +120,8 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
             <option value="3">3 personas</option>
             <option value="4">4 personas</option>
             <option value="5">5 personas</option>
-            <option value="6+">6 o más personas</option>
+            <option value="6">6 personas</option>
+            <option value="7+">7 o más personas</option>
           </select>
         </div>
 
@@ -282,12 +283,14 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
       (new Date(egreso) - new Date(ingreso)) / (1000 * 60 * 60 * 24)
     );
 
+    const huespedesTexto = huespedes === '1' ? '1 persona' : huespedes === '7+' ? '7 o más personas' : `${huespedes} personas`;
+
     const waMessage = [
       `¡Hola! Me comunico desde el sitio web de La Casa de Kuki.`,
       ``,
       `*Datos de consulta:*`,
       `- Nombre: ${nombre}`,
-      `- Huéspedes: ${huespedes} persona(s)`,
+      `- Huéspedes: ${huespedesTexto}`,
       `- Ingreso: ${formatDate(ingreso)}`,
       `- Egreso: ${formatDate(egreso)} (${nights} noche${nights !== 1 ? 's' : ''})`,
       ``,
