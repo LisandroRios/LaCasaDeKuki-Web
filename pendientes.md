@@ -19,7 +19,7 @@ Este documento define las tareas técnicas y de contenido para las próximas ver
 ### 3. Refactor UI/UX (Mobile-First)
 - [ ] **Hero Rediseñado:** Ajustar el Hero para que ocupe el 100% del alto (h-screen), con un *overlay* oscuro que permita leer perfectamente el H1 principal y el botón CTA ("Ver disponibilidad"). Eliminar textos largos de esta sección.
 - [ ] **Estilos Norteños:** Ajustar la paleta de colores en Tailwind. Reemplazar marrones planos por tonos terracota/arcilla y agregar texturas sutiles si es posible para darle un aspecto más orgánico y menos corporativo.
-- [ ] **Prueba Social / Trust:** Agregar un enlace directo al perfil de Google Mi Negocio en el Footer y en la sección de Contacto.
+- [x] **Prueba Social / Trust:** Agregar un enlace directo al perfil de Google Mi Negocio en el Footer y en la sección de Contacto.
 - [x] **Restricciones UX:** Límite máximo de fechas en el formulario: calculado automáticamente como fin del semestre actual (30/06 o 31/12). Previene consultas fuera del rango de precios definidos.
 - [x] **IMPORTANTISIMO:** Límite de fechas implementado por semestre. Al cambiar de semestre, el sitio automáticamente pasa a permitir el siguiente período. No es necesario tocar la automatización.
 

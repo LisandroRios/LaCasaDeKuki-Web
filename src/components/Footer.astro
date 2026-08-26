@@ -48,15 +48,22 @@ const currentYear = new Date().getFullYear();
             href="https://www.google.com.ar/maps/place/La+Casa+de+Kuki+Purmamarca/@-23.7484756,-65.4966371,17z/data=!4m9!3m8!1s0x941b49429382b9a1:0x940dd8cb5206f489!5m2!4m1!1i2!8m2!3d-23.7484756!4d-65.4966371!16s%2Fg%2F11tt5xrsqn?entry=ttu&g_ep=EgoyMDI2MDgwNS4xIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
-            class="footer-social-btn"
-            id="footer-maps-link"
-            aria-label="Ver La Casa de Kuki en Google Maps"
+            class="footer-social-btn footer-google-btn"
+            id="footer-google-reviews-link"
+            aria-label="Ver reseñas de La Casa de Kuki en Google (4.7 estrellas, 112 reseñas)"
           >
-            <!-- Maps SVG -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            <!-- Google «G» logo SVG -->
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#EA4335" d="M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582L19.91 3C17.782 1.145 15.055 0 12 0 7.27 0 3.198 2.698 1.24 6.65l4.026 3.115z"/>
+              <path fill="#34A853" d="M16.04 18.013c-1.09.703-2.474 1.078-4.04 1.078a7.077 7.077 0 0 1-6.723-4.823l-4.04 3.067A11.965 11.965 0 0 0 12 24c2.933 0 5.735-1.043 7.834-3l-3.793-2.987z"/>
+              <path fill="#4A90D9" d="M19.834 21c2.195-2.048 3.62-5.096 3.62-9 0-.71-.109-1.473-.272-2.182H12v4.637h6.436c-.317 1.559-1.17 2.766-2.395 3.558L19.834 21z"/>
+              <path fill="#FBBC05" d="M5.277 14.268A7.12 7.12 0 0 1 4.909 12c0-.782.125-1.533.357-2.235L1.24 6.65A11.934 11.934 0 0 0 0 12c0 1.92.445 3.73 1.237 5.335l4.04-3.067z"/>
             </svg>
-            Google Maps
+            <span class="footer-google-text">
+              <span class="footer-google-rating">4.7</span>
+              <span class="footer-google-stars" aria-hidden="true">★★★★★</span>
+              <span class="footer-google-count">(112 reseñas)</span>
+            </span>
           </a>
 
           <a
@@ -240,6 +247,45 @@ const currentYear = new Date().getFullYear();
     background: #25D366;
     border-color: #25D366;
     color: white;
+  }
+
+  /* Google reviews badge */
+  .footer-google-btn {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.15);
+    gap: 0.6rem;
+    padding: 0.5rem 0.875rem;
+  }
+
+  .footer-google-btn:hover {
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.28);
+    color: white;
+  }
+
+  .footer-google-text {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    line-height: 1;
+  }
+
+  .footer-google-rating {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: white;
+  }
+
+  .footer-google-stars {
+    color: #F59E0B;
+    font-size: 0.8rem;
+    letter-spacing: -0.5px;
+  }
+
+  .footer-google-count {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
   }
 
   /* Columns */
