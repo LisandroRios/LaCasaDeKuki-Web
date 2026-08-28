@@ -2,32 +2,36 @@
 
 /* =============================================
    DESIGN SYSTEM — La Casa de Kuki
-   Paleta: Rojo Colonial · Arcilla · Arena · Blanco Cálido · Carbón
+   Paleta: Arcilla Viva · Óxido · Ocre Dorado · Adobe · Carbón Norteño
    ============================================= */
 
 @theme {
-  /* Colores principales — identidad norteña */
-  --color-terracota: #B85430;         /* Rojo colonial principal */
-  --color-terracota-light: #D07050;   /* Arcilla suave */
-  --color-terracota-dark: #8A3A1E;    /* Oxidado profundo */
-  --color-terracota-xdark: #6B2A12;   /* Sombra oscura */
-  --color-arena: #DECA9A;             /* Arena del desierto */
-  --color-arena-light: #EDE3C6;       /* Arena pálida */
-  --color-arena-dark: #C9B07A;        /* Ocre medio */
-  --color-blanco-calido: #F8F4EE;     /* Blanco con calidez */
-  --color-carbon: #251A12;            /* Carbón norteño */
-  --color-carbon-light: #4A3828;      /* Marrón oscuro legible */
-  --color-marron: #7A4B2E;
-  --color-marron-dark: #5C3520;
+  /* Colores principales — identidad norteña de la Quebrada */
+  --color-terracota: #C05535;         /* Arcilla viva — más saturada y cálida */
+  --color-terracota-light: #D4714E;   /* Barro claro */
+  --color-terracota-dark: #913B20;    /* Óxido profundo */
+  --color-terracota-xdark: #6E2811;   /* Sombra de adobe */
+  --color-arena: #E0C990;             /* Ocre dorado del desierto */
+  --color-arena-light: #EFE5C8;       /* Alabastro cálido */
+  --color-arena-dark: #C8A96A;        /* Ocre medio tostado */
+  --color-blanco-calido: #FAF6F0;     /* Blanco adobe */
+  --color-carbon: #221610;            /* Carbón de leña norteño */
+  --color-carbon-light: #4E3820;      /* Tierra oscura legible */
+  --color-marron: #8C5230;            /* Arcilla media — más viva que antes */
+  --color-marron-dark: #613822;       /* Adobe oscuro con tinte rojizo */
 
   /* Fuentes — rústico moderno */
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Lato', system-ui, sans-serif;
 
   /* Sombras */
-  --shadow-warm: 0 4px 24px rgba(184, 84, 48, 0.15);
-  --shadow-card: 0 2px 16px rgba(37, 26, 18, 0.08);
-  --shadow-hero: 0 8px 40px rgba(37, 26, 18, 0.25);
+  --shadow-warm: 0 4px 24px rgba(192, 85, 53, 0.18);
+  --shadow-card: 0 2px 16px rgba(34, 22, 16, 0.09);
+  --shadow-hero: 0 8px 40px rgba(34, 22, 16, 0.28);
+
+  /* Texturas — grano orgánico adobe/tierra */
+  --texture-adobe: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='overlay'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+  --texture-adobe-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='overlay'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
 /* =============================================
@@ -49,8 +53,11 @@ body {
   color: var(--color-carbon);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  /* Textura noise sutil — grano fotográfico */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  /* Textura adobe — grano orgánico sutil con tinte cálido */
+  background-image:
+    radial-gradient(ellipse at 0% 0%, rgba(192, 85, 53, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse at 100% 100%, rgba(224, 201, 144, 0.06) 0%, transparent 60%),
+    var(--texture-adobe);
 }
 
 h1, h2, h3, h4, h5 {

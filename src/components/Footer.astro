@@ -7,7 +7,7 @@ const currentYear = new Date().getFullYear();
   <!-- Wave decorativo superior -->
   <div class="footer-wave" aria-hidden="true">
     <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,25 1440,30 L1440,60 L0,60 Z" fill="#2C1A0E"/>
+      <path d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,25 1440,30 L1440,60 L0,60 Z" fill="#221610"/>
     </svg>
   </div>
 
@@ -142,7 +142,10 @@ const currentYear = new Date().getFullYear();
 
 <style>
   .footer {
-    background-color: #1A0E08;
+    background-color: var(--color-carbon);
+    background-image:
+      radial-gradient(ellipse at 30% 80%, rgba(192, 85, 53, 0.1) 0%, transparent 50%),
+      var(--texture-adobe-dark);
     position: relative;
   }
 
