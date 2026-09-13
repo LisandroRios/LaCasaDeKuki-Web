@@ -10,7 +10,7 @@ export interface Props {
 const {
   title = 'La Casa de Kuki — Hospedaje en Purmamarca, Jujuy',
   description = 'Hospedaje cálido y auténtico en el corazón de Purmamarca, Jujuy. Departamentos confortables, quincho, estacionamiento y vistas a los cerros. ¡Reservá directo!',
-  image = '/images/hero.png',
+  image = '/images/hero.webp',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -86,7 +86,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <nav id="navbar" class="navbar">
       <div class="section-wrapper navbar-inner">
         <a href="/" class="navbar-logo" aria-label="La Casa de Kuki - Inicio">
-          <img src="/images/logo.png" alt="La Casa de Kuki" width="48" height="48" />
+          <img src="/images/logo.webp" alt="La Casa de Kuki" width="48" height="48" />
           <span class="navbar-brand-text">La Casa de Kuki</span>
         </a>
         <div class="navbar-links">
