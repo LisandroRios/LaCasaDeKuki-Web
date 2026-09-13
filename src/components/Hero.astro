@@ -13,8 +13,8 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
       alt=""
       class="hero-bg-img"
       fetchpriority="high"
-      width="1920"
-      height="1080"
+      width="1350"
+      height="1800"
       role="presentation"
     />
     <div class="hero-overlay"></div>
@@ -80,14 +80,32 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 40%;
+    /* Para imagen vertical: centrar en la parte media-alta donde suele estar el sujeto */
+    object-position: center 30%;
     transform: scale(1.05);
     animation: heroZoom 14s ease-out forwards;
+    will-change: transform;
+  }
+
+  /* En desktop la imagen vertical puede verse muy recortada — ajustamos posición */
+  @media (min-width: 900px) {
+    .hero-bg-img {
+      object-position: center 20%;
+    }
   }
 
   @keyframes heroZoom {
     from { transform: scale(1.05); }
     to   { transform: scale(1); }
+  }
+
+  /* En mobile desactivar la animación zoom para evitar el efecto raro al hacer scroll
+     (iOS tiene problemas con animations en backgrounds fixed/sticky) */
+  @media (max-width: 768px) {
+    .hero-bg-img {
+      animation: none;
+      transform: scale(1);
+    }
   }
 
   /* Overlay con degradado rico — más oscuro abajo para que el scroll indicator se lea */
