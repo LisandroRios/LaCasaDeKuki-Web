@@ -12,9 +12,11 @@ Este documento define las tareas técnicas y de contenido para las próximas ver
 - [ ] Configurar la lectura del 'Measurement ID' desde las variables de entorno (`.env`).
 
 ### 2. Optimización de Imágenes y Rendimiento
-- [ ] Convertir todas las imágenes de `/public/images/` a formato **WebP**.
-- [ ] Implementar el componente nativo `<Image />` de Astro para garantizar lazy loading y compresión automática.
-- [ ] **Hero Section Fijo:** Configurar una imagen determinística (fija y de alto impacto) para el Hero, asegurando que cargue de inmediato (sin lazy loading).
+- [x] Convertir todas las imágenes de `/public/images/` a formato **WebP** (Inti, Killa, Exterior, Quincho, Hero, Logo).
+- [x] Imágenes servidas correctamente desde `/public/images/` con nombres descriptivos normalizados.
+- [x] **Hero Section Fijo:** Hero usa `exterior-01.webp` con `fetchpriority="high"` para carga inmediata.
+- [x] Galería actualizada con nueva categoría **Quincho 🔥** y todas las rutas WebP correctas.
+- [ ] *(Opcional)* Implementar el componente `<Image />` de Astro para compresión adicional en build-time.
 
 ### 3. Refactor UI/UX (Mobile-First)
 - [ ] **Hero Rediseñado:** Ajustar el Hero para que ocupe el 100% del alto (h-screen), con un *overlay* oscuro que permita leer perfectamente el H1 principal y el botón CTA ("Ver disponibilidad"). Eliminar textos largos de esta sección.
