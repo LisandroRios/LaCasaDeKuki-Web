@@ -52,3 +52,11 @@ Este documento define las tareas técnicas y de contenido para las próximas ver
 ### 4. Tareas de Gestión (Fuera del scope del agente)
 - [ ] *Lisandro:* Conectar Meta Business y configurar el Píxel de Meta (se solicitará al agente la inyección del script en su momento).
 - [ ] *Lisandro:* Redactar el contenido de las guías turísticas.
+
+### 5. Integración con el calendario
+- [ ] Trasladar el modelo actual de "Consultar disponibilidad" por whatsapp, a un microservicio general. Como va a funcionar?
+1. Consultar disponibilidad va a llevar a un apartado donde se consulta lo mismo que ahora (personas, fecha, etc).
+2. En esa misma consulta, que responda si hay disponibilidad para esa fecha.
+3. Si hay disponibilidad, que muestre el precio por noche.
+4. Si no hay disponibilidad, que muestre un mensaje diciendo que no hay disponibilidad.
+5. Todo esto, haciendolo desde la pagina, o sea que no haya que salir de acá. Entonces, una vez que se decida el usuario, recien vaya a mandar el msj por whatsapp para confirmar la reserva.
