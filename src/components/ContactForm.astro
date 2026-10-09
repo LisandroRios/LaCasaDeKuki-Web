@@ -217,14 +217,13 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
       .substring(0, 500);
   }
 
-  // Fechas: ingreso debe ser antes que egreso y ambas dentro del semestre
-  function isValidDates(ingreso, egreso, maxDate) {
-    const ingresoDate = new Date(ingreso);
-    const egresoDate = new Date(egreso);
-    const maxAllowed = new Date(maxDate);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return ingresoDate >= today && egresoDate > ingresoDate && egresoDate <= maxAllowed;
+  // Obtener fecha local de hoy en formato YYYY-MM-DD (inmune a desfase UTC)
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
+  // Fechas: ingreso debe ser hoy o posterior, egreso después de ingreso y ambas dentro del semestre
+  function isValidDates(ingreso, egreso, maxAllowed, minAllowed) {
+    return ingreso >= minAllowed && egreso > ingreso && egreso <= maxAllowed;
   }
 
   function showError(msg) {
@@ -241,7 +240,6 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
   }
 
   // Fijar fecha mínima de hoy
-  const today = new Date().toISOString().split('T')[0];
   const ingresoInput = document.getElementById('ingreso');
   const egresoInput = document.getElementById('egreso');
   if (ingresoInput) ingresoInput.setAttribute('min', today);
@@ -253,9 +251,8 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
   // Fijar fecha máxima: fin del semestre actual
   // Enero–Junio → 30/06 | Julio–Diciembre → 31/12
   // Actualizar cada semestre para abrir nuevas disponibilidades con precios actualizados.
-  const nowForMax = new Date();
-  const currentMonth = nowForMax.getMonth(); // 0-indexed (0=enero, 11=diciembre)
-  const currentYear = nowForMax.getFullYear();
+  const currentMonth = now.getMonth(); // 0-indexed (0=enero, 11=diciembre)
+  const currentYear = now.getFullYear();
   const maxDate = currentMonth < 6
     ? `${currentYear}-06-30`   // primer semestre
     : `${currentYear}-12-31`;  // segundo semestre
@@ -294,7 +291,7 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
       return;
     }
 
-    if (!isValidDates(ingreso, egreso, maxDate)) {
+    if (!isValidDates(ingreso, egreso, maxDate, today)) {
       const [maxY, maxM, maxD] = maxDate.split('-');
       showError(`Las fechas no son válidas. El ingreso debe ser hoy o posterior, el egreso debe ser después del ingreso, y ambas fechas deben estar dentro del semestre actual (hasta el ${maxD}/${maxM}/${maxY}).`);
       return;
@@ -332,13 +329,24 @@ const whatsappBaseMessage = '¡Hola! Vi la web de La Casa de Kuki y quiero consu
       submitBtn.setAttribute('disabled', 'true');
     }
 
+    // Registrar conversión en GA4 si está configurado
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead', {
+        event_category: 'contact',
+        event_label: 'whatsapp_form'
+      });
+    }
+
+    // Redirigir a WhatsApp (usar window.location.href para evitar popup blocker en móviles)
     setTimeout(() => {
-      window.open(waUrl, '_blank', 'noopener,noreferrer');
-      if (submitBtn) {
-        submitBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/></svg> Enviar consulta por WhatsApp`;
-        submitBtn.removeAttribute('disabled');
-      }
-    }, 400);
+      window.location.href = waUrl;
+      setTimeout(() => {
+        if (submitBtn) {
+          submitBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/></svg> Enviar consulta por WhatsApp`;
+          submitBtn.removeAttribute('disabled');
+        }
+      }, 1000);
+    }, 250);
   });
 </script>
 

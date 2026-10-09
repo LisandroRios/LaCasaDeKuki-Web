@@ -1,0 +1,149 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const whatsappNumber = '5493884616542';
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('¡Hola! Me encontraba navegando en la web de La Casa de Kuki y quería hacerles una consulta.')}`;
+---
+
+<Layout
+  title="Página no encontrada — La Casa de Kuki · Purmamarca"
+  description="La página que buscás no existe o cambió de lugar. Volvé al inicio para conocer nuestros departamentos en Purmamarca, Jujuy."
+>
+  <main class="notfound-main">
+    <div class="section-wrapper notfound-inner">
+      <div class="notfound-badge">404 · No encontrado</div>
+      <h1 class="notfound-title">
+        Te desviaste del<br /><em>camino</em>
+      </h1>
+      <p class="notfound-desc">
+        Parece que el sendero que buscás no está por acá. No te preocupes: en la Quebrada perderse es parte del viaje, pero volver a casa siempre es fácil.
+      </p>
+
+      <div class="notfound-actions">
+        <a href="/" class="btn-primary notfound-btn-home">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+          </svg>
+          Volver al inicio
+        </a>
+
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="notfound-btn-wa"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.553 4.117 1.52 5.847L0 24l6.32-1.495A11.947 11.947 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.727.881.896-3.624-.234-.373A9.818 9.818 0 112 12c0 5.42 4.4 9.818 10 9.818z"/>
+          </svg>
+          Consultar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .notfound-main {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-arena-light, #FAF6F0);
+    padding: 7rem 1.5rem 5rem;
+    position: relative;
+    text-align: center;
+  }
+
+  .notfound-inner {
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .notfound-badge {
+    display: inline-block;
+    background-color: rgba(193, 96, 58, 0.12);
+    color: var(--color-terracota, #C1603A);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    margin-bottom: 1.5rem;
+  }
+
+  .notfound-title {
+    font-family: var(--font-display, 'Fraunces', serif);
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.15;
+    color: var(--color-marron-dark, #221610);
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+  }
+
+  .notfound-title em {
+    font-style: italic;
+    color: var(--color-terracota, #C1603A);
+  }
+
+  .notfound-desc {
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: rgba(34, 22, 16, 0.75);
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+  }
+
+  .notfound-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .notfound-btn-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.8rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .notfound-btn-home:hover {
+    transform: translateY(-2px);
+  }
+
+  .notfound-btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.8rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #25D366;
+    background-color: white;
+    border: 1.5px solid rgba(37, 211, 102, 0.35);
+    transition: all 0.2s ease;
+  }
+
+  .notfound-btn-wa:hover {
+    background-color: #25D366;
+    color: white;
+    border-color: #25D366;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+  }
+</style>

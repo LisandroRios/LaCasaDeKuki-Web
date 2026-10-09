@@ -1,4 +1,3 @@
----
 # Reglas para Googlebot
 User-agent: Googlebot
 Allow: /
