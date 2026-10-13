@@ -14,7 +14,8 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID || import.meta.env.GOOGLE_ANALYTICS_ID;
+// GA4: solo se carga en build de producción para no ensuciar métricas con visitas locales
+const googleAnalyticsId = import.meta.env.PROD ? import.meta.env.PUBLIC_GA_ID : undefined;
 ---
 
 <!doctype html>
@@ -82,16 +83,24 @@ const googleAnalyticsId = import.meta.env.PUBLIC_GA_ID || import.meta.env.GOOGLE
       "image": new URL(image, Astro.site)
     })} />
 
-    <!-- Google Analytics (GA4) — solo si está definido en variables de entorno -->
+    <!-- Google Analytics (GA4) vía Partytown (web worker) — requiere PUBLIC_GA_ID -->
     {googleAnalyticsId && (
       <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
-        <script is:inline define:vars={{ gaId: googleAnalyticsId }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', gaId);
-        </script>
+        <script
+          is:inline
+          type="text/partytown"
+          src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+        ></script>
+        <script
+          is:inline
+          type="text/partytown"
+          set:html={`
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function(){ dataLayer.push(arguments); };
+            gtag('js', new Date());
+            gtag('config', ${JSON.stringify(googleAnalyticsId)});
+          `}
+        ></script>
       </>
     )}
   </head>

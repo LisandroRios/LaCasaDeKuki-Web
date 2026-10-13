@@ -16,10 +16,10 @@ Este documento define las tareas técnicas y de contenido para las próximas ver
 - [x] Imágenes servidas correctamente desde `/public/images/` con nombres descriptivos normalizados.
 - [x] **Hero Section Fijo:** Hero usa `exterior-01.webp` con `fetchpriority="high"` para carga inmediata.
 - [x] Galería actualizada con nueva categoría **Quincho 🔥** y todas las rutas WebP correctas.
-- [ ] *(Opcional)* Implementar el componente `<Image />` de Astro para compresión adicional en build-time.
+- [x] *(Opcional)* Implementar el componente `<Image />` de Astro para compresión adicional en build-time.
 
 ### 3. Refactor UI/UX (Mobile-First)
-- [ ] **Hero Rediseñado:** Ajustar el Hero para que ocupe el 100% del alto (h-screen), con un *overlay* oscuro que permita leer perfectamente el H1 principal y el botón CTA ("Ver disponibilidad"). Eliminar textos largos de esta sección.
+- [x] **Hero Rediseñado:** Ajustar el Hero para que ocupe el 100% del alto (h-screen), con un *overlay* oscuro que permita leer perfectamente el H1 principal y el botón CTA ("Ver disponibilidad"). Eliminar textos largos de esta sección.
 - [x] **Estilos Norteños:** Ajustar la paleta de colores en Tailwind. Reemplazar marrones planos por tonos terracota/arcilla y agregar texturas sutiles si es posible para darle un aspecto más orgánico y menos corporativo.
 - [x] **Prueba Social / Trust:** Agregar un enlace directo al perfil de Google Mi Negocio en el Footer y en la sección de Contacto.
 - [x] **Restricciones UX:** Límite máximo de fechas en el formulario: calculado automáticamente como fin del semestre actual (30/06 o 31/12). Previene consultas fuera del rango de precios definidos.
@@ -28,8 +28,8 @@ Este documento define las tareas técnicas y de contenido para las próximas ver
 
 
 ### 4. Tareas de Gestión (Fuera del scope del agente)
-- [ ] *Lisandro:* Comprar y conectar el dominio `lacasadekuki.com`.
-- [ ] *Lisandro:* Generar el ID de medición en GA4 y agregarlo a Vercel/entorno.
+- [x] *Lisandro:* Comprar y conectar el dominio `lacasadekuki.com`.
+- [x] *Lisandro:* Generar el ID de medición en GA4 y agregarlo a Vercel/entorno.
 
 ---
 
