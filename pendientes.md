@@ -8,8 +8,8 @@ Este documento define las tareas técnicas y de contenido para las próximas ver
 **Objetivo:** Tener una web rápida, funcional, estéticamente norteña y lista para recibir tráfico real y medirlo.
 
 ### 1. Métricas y Analytics (Tracking)
-- [ ] **Google Analytics (GA4):** Integrar GA4 utilizando `@astrojs/partytown` para ejecutar el script `gtag.js` en un web worker y no penalizar el rendimiento en celulares.
-- [ ] Configurar la lectura del 'Measurement ID' desde las variables de entorno (`.env`).
+- [x] **Google Analytics (GA4):** Integrar GA4 utilizando `@astrojs/partytown` para ejecutar el script `gtag.js` en un web worker y no penalizar el rendimiento en celulares.
+- [x] Configurar la lectura del 'Measurement ID' desde las variables de entorno (`.env`).
 
 ### 2. Optimización de Imágenes y Rendimiento
 - [x] Convertir todas las imágenes de `/public/images/` a formato **WebP** (Inti, Killa, Exterior, Quincho, Hero, Logo).
